@@ -32,5 +32,15 @@ namespace ITP4915M_Project.Properties {
                 return ((string)(this["Database1ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\ITP4915.accdb")]
+        public string ITP4915ConnectionString {
+            get {
+                return ((string)(this["ITP4915ConnectionString"]));
+            }
+        }
     }
 }

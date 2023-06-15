@@ -51,3 +51,16 @@ C:\Users\user\Desktop\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Proje
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.CoreCompileInputs.cache
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.exe
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.pdb
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.AssemblyReference.cache
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.addBPA.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ContractManagement.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ItemManagement.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.PurchaseOrderProcessing.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.RequestManagement.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Login.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.MainMenu.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Properties.Resources.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.GenerateResource.cache
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.CoreCompileInputs.cache
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.exe
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.pdb
