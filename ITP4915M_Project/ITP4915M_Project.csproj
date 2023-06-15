@@ -51,6 +51,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database1DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\addAgreement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\addAgreement.Designer.cs">
+      <DependentUpon>addAgreement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ContractInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ContractInfo.Designer.cs">
+      <DependentUpon>ContractInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ContractManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +132,21 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThemeColor.cs" />
+    <EmbeddedResource Include="Forms\addAgreement.resx">
+      <DependentUpon>addAgreement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContractInfo.resx">
+      <DependentUpon>ContractInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContractManagement.resx">
+      <DependentUpon>ContractManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ItemManagement.resx">
+      <DependentUpon>ItemManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PurchaseOrderProcessing.resx">
+      <DependentUpon>PurchaseOrderProcessing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\RequestManagement.resx">
       <DependentUpon>RequestManagement.cs</DependentUpon>
     </EmbeddedResource>

@@ -29,10 +29,17 @@ namespace ITP4915M_Project.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // PurchaseOrderProcessing
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1172, 687);
+            this.Name = "PurchaseOrderProcessing";
             this.Text = "PurchaseOrderProcessing";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
