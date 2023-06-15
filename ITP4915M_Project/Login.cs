@@ -7,7 +7,7 @@ namespace ITP4915M_Project
     public partial class Login : Form
     {
         // Database connection string
-        private const string ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Database1.accdb";
+        private const string ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
 
         public Login()
         {
