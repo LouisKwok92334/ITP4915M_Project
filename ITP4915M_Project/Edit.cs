@@ -116,5 +116,56 @@ namespace ITP4915M_Project
 
             return null; // Supplier not found
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int itemId = _item.Id;// Get the itemId based on the selected item in your UI, e.g., from a DataGridView or a ListBox
+
+    if (itemId == 0)
+            {
+                MessageBox.Show("Please select an item to delete.");
+                return;
+            }
+
+            DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this item?",
+                                                         "Confirm Delete",
+                                                         MessageBoxButtons.YesNo);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                DeleteItem(itemId);
+            }
+        }
+
+        private void DeleteItem(int itemId)
+        {
+            using (OleDbConnection conn = new OleDbConnection(ConnectionString))
+            {
+                string query = $"DELETE FROM item WHERE item_id = {itemId}";
+
+                using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                {
+                    try
+                    {
+                        conn.Open();
+                        int affectedRows = cmd.ExecuteNonQuery();
+
+                        if (affectedRows > 0)
+                        {
+                            MessageBox.Show("Item deleted successfully.");
+                            // Refresh the UI to reflect the deletion, e.g., update the DataGridView or ListBox
+                        }
+                        else
+                        {
+                            MessageBox.Show("Item deletion failed: No rows were affected in the database.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error: {ex.Message}");
+                    }
+                }
+            }
+        }
     }
 }
