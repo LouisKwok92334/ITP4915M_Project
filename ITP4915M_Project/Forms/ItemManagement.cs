@@ -2,6 +2,8 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using ITP4915M_Project.Models;
+
 
 namespace ITP4915M_Project.Forms
 {
@@ -15,21 +17,15 @@ namespace ITP4915M_Project.Forms
             FillComboBoxes();
         }
 
-      private void btnSearch_Click(object sender, EventArgs e)
-{
-    string categoryCondition = cboCategory.SelectedValue != null ? $"AND category_id = {cboCategory.SelectedValue}" : "";
-    string supplierCondition = cboSupplier.SelectedValue != null ? $"AND item.supplier_id = {cboSupplier.SelectedValue}" : "";  // Changed supplier_id to item.supplier_id
-    string queryString = $"SELECT item.*, supplier.supplier_name FROM item INNER JOIN supplier ON item.supplier_id = supplier.supplier_id WHERE item_name LIKE '%{txtsearchItem.Text}%' {categoryCondition} {supplierCondition}";
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string categoryCondition = cboCategory.SelectedValue != null ? $"AND category_id = {cboCategory.SelectedValue}" : "";
+            string supplierCondition = cboSupplier.SelectedValue != null ? $"AND item.supplier_id = {cboSupplier.SelectedValue}" : "";
+            string queryString = $"SELECT item.*, supplier.supplier_name FROM item INNER JOIN supplier ON item.supplier_id = supplier.supplier_id WHERE item_name LIKE '%{txtsearchItem.Text}%' {categoryCondition} {supplierCondition}";
 
-
-            // Get the data
             DataTable dt = GetData(queryString);
-
-    // Display the data in dataGridView1
-    dataGridView1.DataSource = dt;
-}
-
-
+            dataGridView1.DataSource = dt;
+        }
 
         private DataTable GetData(string queryString)
         {
@@ -55,12 +51,13 @@ namespace ITP4915M_Project.Forms
 
             return dt;
         }
+
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedCells.Count > 0)
             {
-                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+                int selectedRowIndex = dataGridView1.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataGridView1.Rows[selectedRowIndex];
 
                 txtName.Text = Convert.ToString(selectedRow.Cells["item_name"].Value);
                 txtSupplier.Text = Convert.ToString(selectedRow.Cells["supplier_name"].Value);
@@ -71,20 +68,73 @@ namespace ITP4915M_Project.Forms
 
         private void FillComboBoxes()
         {
-            // Fill the cboCategory
             string categoryQuery = "SELECT category_id, category_name FROM category";
             DataTable dtCategory = GetData(categoryQuery);
             cboCategory.DataSource = dtCategory;
-            cboCategory.ValueMember = "category_id";  // The actual value for the item
-            cboCategory.DisplayMember = "category_name";  // The value shown to the user
+            cboCategory.ValueMember = "category_id";
+            cboCategory.DisplayMember = "category_name";
 
-            // Fill the cboSupplier
             string supplierQuery = "SELECT supplier_id, supplier_name FROM supplier";
             DataTable dtSupplier = GetData(supplierQuery);
             cboSupplier.DataSource = dtSupplier;
-            cboSupplier.ValueMember = "supplier_id"; // The actual value for the item
-            cboSupplier.DisplayMember = "supplier_name"; // The value shown to the user
+            cboSupplier.ValueMember = "supplier_id";
+            cboSupplier.DisplayMember = "supplier_name";
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                int itemId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["item_id"].Value);
+
+                // Retrieve the item details from the database
+                ITP4915M_Project.Models.Item selectedItem = GetItemById(itemId);
+
+                if (selectedItem != null)
+                {
+                    var editForm = new Edit(selectedItem);
+                    editForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Item not found.");
+                }
+            }
+        }
+
+        private Item GetItemById(int itemId)
+        {
+            using (OleDbConnection conn = new OleDbConnection(ConnectionString))
+            {
+                string query = $"SELECT item_id, item_name, supplier_name, stock FROM item INNER JOIN supplier ON item.supplier_id = supplier.supplier_id WHERE item_id = {itemId}";
+
+                using (OleDbCommand cmd = new OleDbCommand(query, conn))
+                {
+                    try
+                    {
+                        conn.Open();
+                        OleDbDataReader reader = cmd.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            Item item = new Item();
+                            item.Id = Convert.ToInt32(reader["item_id"]);
+                            item.Name = Convert.ToString(reader["item_name"]);
+                            item.Supplier = Convert.ToString(reader["supplier_name"]);
+                            item.Stack = Convert.ToInt32(reader["stock"]);
+                            // Set other properties as needed
+                            return item;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+
+            return null; // Item not found
+        }
+
 
     }
 }
