@@ -216,9 +216,6 @@
     <None Include="Resources\Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database1.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="ITP4915.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
