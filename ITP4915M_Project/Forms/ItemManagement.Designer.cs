@@ -39,7 +39,7 @@ namespace ITP4915M_Project.Forms
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtSupplier = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.btnViewDetail = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -164,17 +164,17 @@ namespace ITP4915M_Project.Forms
             this.txtName.TabIndex = 0;
             this.txtName.TextChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // btnViewDetail
+            // btnEdit
             // 
-            this.btnViewDetail.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.btnViewDetail.AllowDrop = true;
-            this.btnViewDetail.Location = new System.Drawing.Point(1020, 570);
-            this.btnViewDetail.Margin = new System.Windows.Forms.Padding(2);
-            this.btnViewDetail.Name = "btnViewDetail";
-            this.btnViewDetail.Size = new System.Drawing.Size(103, 32);
-            this.btnViewDetail.TabIndex = 3;
-            this.btnViewDetail.Text = "View Detail";
-            this.btnViewDetail.UseVisualStyleBackColor = true;
+            this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnEdit.AllowDrop = true;
+            this.btnEdit.Location = new System.Drawing.Point(1020, 570);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(103, 32);
+            this.btnEdit.TabIndex = 3;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -263,7 +263,7 @@ namespace ITP4915M_Project.Forms
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtsearchItem);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnViewDetail);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -284,7 +284,7 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtSupplier;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button btnViewDetail;
+        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.TextBox txtId;
