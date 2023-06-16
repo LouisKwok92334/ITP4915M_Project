@@ -75,6 +75,7 @@
     <Compile Include="Forms\DatabaseImplementation.Designer.cs">
       <DependentUpon>DatabaseImplementation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EditStaffForm.cs" />
     <Compile Include="Forms\ItemManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,11 +151,17 @@
     <EmbeddedResource Include="Forms\ItemManagement.resx">
       <DependentUpon>ItemManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MasterDataMaintenance.resx">
+      <DependentUpon>MasterDataMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PurchaseOrderProcessing.resx">
       <DependentUpon>PurchaseOrderProcessing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RequestManagement.resx">
       <DependentUpon>RequestManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SystemSecurityControl.resx">
+      <DependentUpon>SystemSecurityControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

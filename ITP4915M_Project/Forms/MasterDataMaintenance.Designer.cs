@@ -29,10 +29,17 @@ namespace ITP4915M_Project.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // MasterDataMaintenance
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1166, 631);
+            this.Name = "MasterDataMaintenance";
             this.Text = "MasterDataMaintenance";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
