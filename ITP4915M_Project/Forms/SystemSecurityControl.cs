@@ -125,7 +125,7 @@ namespace ITP4915M_Project.Forms
         {
             User user = null;
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
-            string query = "SELECT staff.staff_id, staff.login_name, staff.login_password, staff.staff_name, role.role_name FROM staff INNER JOIN role ON staff.role_id = role.role_id WHERE staff.staff_id = ?";
+            string query = "SELECT staff_id, login_name, login_password, staff_name FROM staff WHERE staff_id = ?";
 
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
@@ -152,7 +152,6 @@ namespace ITP4915M_Project.Forms
 
             return user;
         }
-
 
 
         private void SystemSecurityControl_VisibleChanged(object sender, EventArgs e)

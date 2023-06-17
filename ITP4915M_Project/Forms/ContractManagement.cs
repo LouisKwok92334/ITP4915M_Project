@@ -161,5 +161,24 @@ namespace ITP4915M_Project.Forms
             cxActive.Checked = false;
             cbInactive.Checked = false;
         }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                string agreementId = dataGridView1.CurrentRow.Cells["agreement_id"].Value.ToString(); // Make sure to use your correct column name for agreement_id.
+                ContractDetail contractDetailForm = new ContractDetail(agreementId);
+                contractDetailForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a contract from the list.");
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

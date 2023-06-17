@@ -73,6 +73,7 @@ namespace ITP4915M_Project.Forms
             this.btnEdit.TabIndex = 9;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // dataGridView1
             // 
@@ -208,6 +209,7 @@ namespace ITP4915M_Project.Forms
             this.btnDetail.TabIndex = 41;
             this.btnDetail.Text = "Detail";
             this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
             // label10
             // 
