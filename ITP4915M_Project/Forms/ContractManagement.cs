@@ -86,6 +86,9 @@ namespace ITP4915M_Project.Forms
             if (!string.IsNullOrWhiteSpace(searchValue))
                 query += "AND (agreement_id LIKE @SearchValue OR supplier_id LIKE @SearchValue) ";
 
+            if (!string.IsNullOrWhiteSpace(txtSupplier.Text))
+                query += "AND supplier_id LIKE @SearchValue ";
+
             try
             {
                 using (OleDbConnection connection = new OleDbConnection(connectionString))
@@ -105,6 +108,9 @@ namespace ITP4915M_Project.Forms
 
                     if (!string.IsNullOrWhiteSpace(searchValue))
                         command.Parameters.AddWithValue("@SearchValue", "%" + searchValue + "%");
+
+                    if (!string.IsNullOrWhiteSpace(txtSupplier.Text))
+                        command.Parameters.AddWithValue("@SearchValue", "%" + txtSupplier.Text.Trim() + "%");
 
                     using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
                     {

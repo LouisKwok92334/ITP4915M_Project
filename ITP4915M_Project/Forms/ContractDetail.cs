@@ -85,5 +85,13 @@ namespace ITP4915M_Project.Forms
             }
         }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            // Perform any actions or navigation logic you want when the back button is clicked
+
+            // For example, you can close the current form and go back to the previous form
+            this.Close();
+        }
+
     }
 }

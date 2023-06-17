@@ -192,6 +192,7 @@ namespace ITP4915M_Project.Forms
             this.btnBack.TabIndex = 43;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // ContractDetail
             // 
