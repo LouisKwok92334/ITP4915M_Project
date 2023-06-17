@@ -71,3 +71,4 @@ C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Pr
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.SystemSecurityControl.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.EditUser.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.addContract.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ContractDetail.resources

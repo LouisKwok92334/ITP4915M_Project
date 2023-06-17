@@ -58,6 +58,12 @@
     <Compile Include="Forms\addContract.Designer.cs">
       <DependentUpon>addContract.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ContractDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ContractDetail.Designer.cs">
+      <DependentUpon>ContractDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ContractManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\addContract.resx">
       <DependentUpon>addContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ContractDetail.resx">
+      <DependentUpon>ContractDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ContractManagement.resx">
       <DependentUpon>ContractManagement.cs</DependentUpon>
