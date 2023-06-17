@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ITP4915M_Project.Forms
 {
-    public partial class addBPA : Form
+    public partial class addContract : Form
     {
-        public addBPA()
+        public addContract()
         {
             InitializeComponent();
         }

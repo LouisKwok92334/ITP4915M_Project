@@ -52,7 +52,6 @@ C:\Users\user\Desktop\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Proje
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.exe
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.pdb
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.AssemblyReference.cache
-C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.addBPA.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ContractManagement.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ItemManagement.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.PurchaseOrderProcessing.resources
@@ -71,3 +70,4 @@ C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Pr
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.MasterDataMaintenance.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.SystemSecurityControl.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.EditUser.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.addContract.resources

@@ -52,11 +52,11 @@
     <Compile Include="Edit.Designer.cs">
       <DependentUpon>Edit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\addBPA.cs">
+    <Compile Include="Forms\addContract.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\addBPA.Designer.cs">
-      <DependentUpon>addBPA.cs</DependentUpon>
+    <Compile Include="Forms\addContract.Designer.cs">
+      <DependentUpon>addContract.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ContractManagement.cs">
       <SubType>Form</SubType>
@@ -144,8 +144,8 @@
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\addBPA.resx">
-      <DependentUpon>addBPA.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\addContract.resx">
+      <DependentUpon>addContract.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ContractManagement.resx">
       <DependentUpon>ContractManagement.cs</DependentUpon>
