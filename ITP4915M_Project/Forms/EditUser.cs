@@ -73,15 +73,15 @@ namespace ITP4915M_Project.Forms
 
                 if (user.ID == 0) // new user
                 {
-                    string query = "INSERT INTO staff (login_name, login_password, staff_name, role_id) VALUES (?, ?, ?, ?)";
+                    string query = "INSERT INTO staff (login_name, login_password, staff_name, role_id, created_at) VALUES (?, ?, ?, ?, ?)";
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@LoginName", user.LoginName);
                         command.Parameters.AddWithValue("@LoginPassword", user.Password);
                         command.Parameters.AddWithValue("@StaffName", user.StaffName);
-
                         int roleId = GetRoleIdByName(user.Role);
                         command.Parameters.AddWithValue("@RoleId", roleId);
+                        command.Parameters.AddWithValue("@CreatedAt", DateTime.Today);
 
                         int rowsAffected = command.ExecuteNonQuery();
 
@@ -94,7 +94,7 @@ namespace ITP4915M_Project.Forms
                             MessageBox.Show("An error occurred while inserting the record. Please try again.", "Insertion Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                }
+                } 
                 else // existing user
                 {
                     string query = "UPDATE staff SET login_name = ?, login_password = ?, staff_name = ?, role_id = ? WHERE staff_id = ?";
