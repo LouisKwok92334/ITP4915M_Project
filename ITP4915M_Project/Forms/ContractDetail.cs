@@ -77,6 +77,27 @@ namespace ITP4915M_Project.Forms
                             }
                         }
                     }
+
+                    string detailQuery = "SELECT agreement_detail_id, delivery_schedule, account_info, quantity, cost " +
+                                 "FROM agreement_detail " +
+                                 "WHERE agreement_id = ?";
+
+                    using (OleDbCommand detailCommand = new OleDbCommand(detailQuery, connection))
+                    {
+                        detailCommand.Parameters.AddWithValue("@AgreementId", agreementId);
+
+                        using (OleDbDataReader detailReader = detailCommand.ExecuteReader())
+                        {
+                            if (detailReader.HasRows)
+                            {
+                                if (detailReader.Read())
+                                {
+                                    txtQty.Text = detailReader["quantity"].ToString();
+                                    txtCost.Text = detailReader["cost"].ToString();
+                                }
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)

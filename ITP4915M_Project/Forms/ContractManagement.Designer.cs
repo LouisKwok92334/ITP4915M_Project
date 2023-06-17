@@ -56,7 +56,7 @@ namespace ITP4915M_Project.Forms
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(431, 563);
+            this.btnAdd.Location = new System.Drawing.Point(419, 570);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(92, 38);
@@ -66,7 +66,7 @@ namespace ITP4915M_Project.Forms
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(943, 570);
+            this.btnEdit.Location = new System.Drawing.Point(944, 570);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(92, 38);
@@ -191,7 +191,7 @@ namespace ITP4915M_Project.Forms
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(70, 563);
+            this.btnSearch.Location = new System.Drawing.Point(70, 570);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(335, 38);
@@ -261,7 +261,7 @@ namespace ITP4915M_Project.Forms
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(569, 563);
+            this.btnReset.Location = new System.Drawing.Point(569, 570);
             this.btnReset.Margin = new System.Windows.Forms.Padding(2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(92, 38);

@@ -41,14 +41,21 @@ namespace ITP4915M_Project.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.txtSupplier = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.txtQty = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCost = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtCost);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtQty);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtEnd);
             this.groupBox2.Controls.Add(this.txtStart);
             this.groupBox2.Controls.Add(this.txtDeliveryAddress);
@@ -61,7 +68,7 @@ namespace ITP4915M_Project.Forms
             this.groupBox2.Controls.Add(this.txtSupplier);
             this.groupBox2.Location = new System.Drawing.Point(37, 329);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(577, 232);
+            this.groupBox2.Size = new System.Drawing.Size(577, 291);
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Contract Detial";
@@ -86,7 +93,7 @@ namespace ITP4915M_Project.Forms
             // 
             // txtDeliveryAddress
             // 
-            this.txtDeliveryAddress.Location = new System.Drawing.Point(151, 177);
+            this.txtDeliveryAddress.Location = new System.Drawing.Point(153, 241);
             this.txtDeliveryAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeliveryAddress.Name = "txtDeliveryAddress";
             this.txtDeliveryAddress.ReadOnly = true;
@@ -96,7 +103,7 @@ namespace ITP4915M_Project.Forms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(26, 180);
+            this.label9.Location = new System.Drawing.Point(28, 244);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(105, 15);
             this.label9.TabIndex = 42;
@@ -173,19 +180,9 @@ namespace ITP4915M_Project.Forms
             this.dataGridView1.Size = new System.Drawing.Size(577, 272);
             this.dataGridView1.TabIndex = 40;
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(397, 582);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(92, 38);
-            this.btnEdit.TabIndex = 42;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(522, 582);
+            this.btnBack.Location = new System.Drawing.Point(522, 632);
             this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(92, 38);
@@ -194,13 +191,50 @@ namespace ITP4915M_Project.Forms
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // txtQty
+            // 
+            this.txtQty.Location = new System.Drawing.Point(111, 180);
+            this.txtQty.Margin = new System.Windows.Forms.Padding(2);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.ReadOnly = true;
+            this.txtQty.Size = new System.Drawing.Size(169, 25);
+            this.txtQty.TabIndex = 47;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 190);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 15);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Quantity";
+            // 
+            // txtCost
+            // 
+            this.txtCost.Location = new System.Drawing.Point(374, 180);
+            this.txtCost.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCost.Name = "txtCost";
+            this.txtCost.ReadOnly = true;
+            this.txtCost.Size = new System.Drawing.Size(169, 25);
+            this.txtCost.TabIndex = 49;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(308, 190);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 15);
+            this.label2.TabIndex = 48;
+            this.label2.Text = "Cost";
+            // 
             // ContractDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 631);
+            this.ClientSize = new System.Drawing.Size(662, 681);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ContractDetail";
@@ -227,7 +261,10 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtEnd;
         private System.Windows.Forms.TextBox txtStart;
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.TextBox txtCost;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtQty;
+        private System.Windows.Forms.Label label1;
     }
 }
