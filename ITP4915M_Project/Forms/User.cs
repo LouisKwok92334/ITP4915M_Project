@@ -13,16 +13,17 @@ namespace ITP4915M_Project
         public string LoginName { get; set; }
         public string Password { get; set; }
         public string StaffName { get; set; }
-        // other properties...
-        public User(int id, string loginName, string password, string staffName)
+        public string Role { get; set; } // Add this line
+
+        public User(int id, string loginName, string password, string staffName, string role)
         {
             ID = id;
             LoginName = loginName;
             Password = password;
             StaffName = staffName;
+            Role = role; // And this line
         }
-
-      
     }
+
 
 }

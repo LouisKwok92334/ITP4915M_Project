@@ -125,7 +125,7 @@ namespace ITP4915M_Project.Forms
         {
             User user = null;
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
-            string query = "SELECT staff_id, login_name, login_password, staff_name FROM staff WHERE staff_id = ?";
+            string query = "SELECT staff.staff_id, staff.login_name, staff.login_password, staff.staff_name, role.role_name FROM staff INNER JOIN role ON staff.role_id = role.role_id WHERE staff.staff_id = ?";
 
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
@@ -142,7 +142,8 @@ namespace ITP4915M_Project.Forms
                                 reader.GetInt32(0),
                                 reader.GetString(1),
                                 reader.GetString(2),
-                                reader.GetString(3)
+                                reader.GetString(3),
+                                reader.GetString(4)
                             );
                         }
                     }
@@ -153,6 +154,7 @@ namespace ITP4915M_Project.Forms
         }
 
 
+
         private void SystemSecurityControl_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible)
@@ -160,5 +162,65 @@ namespace ITP4915M_Project.Forms
                 LoadData();
             }
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchValue = txtSearch.Text;
+
+            if (string.IsNullOrWhiteSpace(searchValue))
+            {
+                MessageBox.Show("Please enter a name to search.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
+            string query = "SELECT * FROM staff WHERE staff_name LIKE ? AND (status <> 'Cancelled' OR status IS NULL)";
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                using (OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    // Use '%' as wildcard for LIKE
+                    command.Parameters.AddWithValue("@staff_name", "%" + searchValue + "%");
+
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        _bindingSource.DataSource = dataTable;
+
+                        if (_bindingSource.Count > 0)
+                        {
+                            MessageBox.Show($"Found {_bindingSource.Count} matching records");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No matching records found");
+                        }
+                    }
+                }
+
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            // Create a new user with default or blank values
+            User newUser = new User(0, "", "", "", "");
+
+            EditUser editUserForm = new EditUser(newUser);
+            if (editUserForm.ShowDialog() == DialogResult.OK)
+            {
+                // Reload data after adding the user
+                LoadData();
+            }
+        }
+
     }
 }

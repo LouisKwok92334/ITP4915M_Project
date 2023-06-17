@@ -34,6 +34,8 @@ namespace ITP4915M_Project.Forms
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lbSearch = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnAddUser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,11 +85,33 @@ namespace ITP4915M_Project.Forms
             this.lbSearch.TabIndex = 5;
             this.lbSearch.Text = "Search";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(357, 89);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(63, 28);
+            this.btnSearch.TabIndex = 6;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnAddUser
+            // 
+            this.btnAddUser.Location = new System.Drawing.Point(117, 552);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(95, 35);
+            this.btnAddUser.TabIndex = 7;
+            this.btnAddUser.Text = "Add User";
+            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            // 
             // SystemSecurityControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1166, 631);
+            this.Controls.Add(this.btnAddUser);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lbSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnDelete);
@@ -109,5 +133,7 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lbSearch;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnAddUser;
     }
 }

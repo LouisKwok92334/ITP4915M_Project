@@ -32,6 +32,7 @@ namespace ITP4915M_Project.Forms
             this.btnSave = new System.Windows.Forms.Button();
             this.LoginIcon = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -40,19 +41,20 @@ namespace ITP4915M_Project.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLoginName = new System.Windows.Forms.TextBox();
+            this.cboRole = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.LoginIcon)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(405, 598);
+            this.btnSave.Location = new System.Drawing.Point(405, 603);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(91, 23);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
+    
             // 
             // LoginIcon
             // 
@@ -64,6 +66,8 @@ namespace ITP4915M_Project.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cboRole);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox4);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtPassword);
@@ -74,14 +78,23 @@ namespace ITP4915M_Project.Forms
             this.groupBox1.Controls.Add(this.txtLoginName);
             this.groupBox1.Location = new System.Drawing.Point(62, 311);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(387, 259);
+            this.groupBox1.Size = new System.Drawing.Size(387, 281);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Info";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(69, 96);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 15);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Role";
+            // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(153, 51);
+            this.textBox4.Location = new System.Drawing.Point(154, 46);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(126, 25);
@@ -90,7 +103,7 @@ namespace ITP4915M_Project.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(68, 54);
+            this.label4.Location = new System.Drawing.Point(69, 49);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 15);
             this.label4.TabIndex = 11;
@@ -98,7 +111,7 @@ namespace ITP4915M_Project.Forms
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(153, 209);
+            this.txtPassword.Location = new System.Drawing.Point(154, 237);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(126, 25);
             this.txtPassword.TabIndex = 10;
@@ -106,7 +119,7 @@ namespace ITP4915M_Project.Forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(68, 209);
+            this.label2.Location = new System.Drawing.Point(69, 237);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 15);
             this.label2.TabIndex = 9;
@@ -114,7 +127,7 @@ namespace ITP4915M_Project.Forms
             // 
             // txtStaffName
             // 
-            this.txtStaffName.Location = new System.Drawing.Point(153, 105);
+            this.txtStaffName.Location = new System.Drawing.Point(154, 142);
             this.txtStaffName.Name = "txtStaffName";
             this.txtStaffName.Size = new System.Drawing.Size(126, 25);
             this.txtStaffName.TabIndex = 8;
@@ -122,7 +135,7 @@ namespace ITP4915M_Project.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(68, 108);
+            this.label3.Location = new System.Drawing.Point(57, 145);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 15);
             this.label3.TabIndex = 6;
@@ -131,7 +144,7 @@ namespace ITP4915M_Project.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 157);
+            this.label1.Location = new System.Drawing.Point(51, 189);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 15);
             this.label1.TabIndex = 4;
@@ -139,10 +152,18 @@ namespace ITP4915M_Project.Forms
             // 
             // txtLoginName
             // 
-            this.txtLoginName.Location = new System.Drawing.Point(153, 154);
+            this.txtLoginName.Location = new System.Drawing.Point(154, 186);
             this.txtLoginName.Name = "txtLoginName";
             this.txtLoginName.Size = new System.Drawing.Size(126, 25);
             this.txtLoginName.TabIndex = 0;
+            // 
+            // cboRole
+            // 
+            this.cboRole.FormattingEnabled = true;
+            this.cboRole.Location = new System.Drawing.Point(154, 96);
+            this.cboRole.Name = "cboRole";
+            this.cboRole.Size = new System.Drawing.Size(121, 23);
+            this.cboRole.TabIndex = 14;
             // 
             // EditUser
             // 
@@ -174,5 +195,7 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLoginName;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cboRole;
     }
 }
