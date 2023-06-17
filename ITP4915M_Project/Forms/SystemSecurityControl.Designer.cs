@@ -29,18 +29,12 @@ namespace ITP4915M_Project.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.staffBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iTP4915DataSet = new ITP4915M_Project.ITP4915DataSet();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lbSearch = new System.Windows.Forms.Label();
-            this.staffTableAdapter = new ITP4915M_Project.ITP4915DataSetTableAdapters.staffTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iTP4915DataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -52,16 +46,6 @@ namespace ITP4915M_Project.Forms
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(964, 362);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // staffBindingSource
-            // 
-            this.staffBindingSource.DataMember = "staff";
-            this.staffBindingSource.DataSource = this.iTP4915DataSet;
-            // 
-            // iTP4915DataSet
-            // 
-            this.iTP4915DataSet.DataSetName = "ITP4915DataSet";
-            this.iTP4915DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnEdit
             // 
@@ -98,10 +82,6 @@ namespace ITP4915M_Project.Forms
             this.lbSearch.TabIndex = 5;
             this.lbSearch.Text = "Search";
             // 
-            // staffTableAdapter
-            // 
-            this.staffTableAdapter.ClearBeforeFill = true;
-            // 
             // SystemSecurityControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -114,9 +94,8 @@ namespace ITP4915M_Project.Forms
             this.Controls.Add(this.dataGridView1);
             this.Name = "SystemSecurityControl";
             this.Text = "SystemSecurityControl";
+            this.Load += new System.EventHandler(this.SystemSecurityControl_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.staffBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iTP4915DataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,8 +108,5 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lbSearch;
-        private ITP4915DataSet iTP4915DataSet;
-        private System.Windows.Forms.BindingSource staffBindingSource;
-        private ITP4915DataSetTableAdapters.staffTableAdapter staffTableAdapter;
     }
 }

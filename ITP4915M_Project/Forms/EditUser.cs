@@ -34,6 +34,8 @@ namespace ITP4915M_Project.Forms
 
             UpdateUser(_user);
 
+            // Close the form after saving the changes.
+            this.Close();
         }
 
         private void UpdateUser(User user)
@@ -63,6 +65,11 @@ namespace ITP4915M_Project.Forms
                     }
                 }
             }
+        }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

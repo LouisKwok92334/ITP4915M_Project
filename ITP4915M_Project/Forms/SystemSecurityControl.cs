@@ -2,24 +2,22 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using ITP4915M_Project.Models;
 
 namespace ITP4915M_Project.Forms
 {
     public partial class SystemSecurityControl : Form
     {
         private BindingSource _bindingSource;
-  
+
         public SystemSecurityControl()
         {
             InitializeComponent();
+            this.VisibleChanged += SystemSecurityControl_VisibleChanged;
             _bindingSource = new BindingSource();
             dataGridView1.DataSource = _bindingSource;
             LoadData();
             btnDelete.Click += new EventHandler(this.btnDelete_Click);
-
         }
-      
         private void LoadData()
         {
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
@@ -32,6 +30,8 @@ namespace ITP4915M_Project.Forms
                 adapter.Fill(dataTable);
                 _bindingSource.DataSource = dataTable;
             }
+
+            dataGridView1.Refresh(); // 强制重新绘制 dataGridView1 的内容
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -121,37 +121,39 @@ namespace ITP4915M_Project.Forms
             {
                 MessageBox.Show("Please select a record to delete.", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.staffTableAdapter.Fill(this.iTP4915DataSet.staff);
+
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+      private void btnEdit_Click(object sender, EventArgs e)
+{
+    if (dataGridView1.SelectedRows.Count > 0)
+    {
+        int staffId = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells["staff_id"].Value); 
+        User user = GetUserById(staffId);
+
+        if (user != null)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                string staffId = dataGridView1.SelectedRows[0].Cells["staff_id"].Value.ToString();
+            EditUser editUserForm = new EditUser(user);
+            editUserForm.ShowDialog();
 
-                // Get the user information from the database or data source
-                User userToEdit = GetUser(staffId);
-
-                // Pass the user information to the EditUser form
-                var editUserForm = new EditUser(userToEdit);
-                editUserForm.FormClosed += (s, ev) => LoadData();
-                // Show the EditUser form
-                editUserForm.Show();
-
-    
-            }
-            else
-            {
-                MessageBox.Show("Please select a record to edit.", "No Record Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // Reload data after editing the user.
+            LoadData();
         }
-
-        public User GetUser(string staffId)
+        else
+        {
+            MessageBox.Show("User not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+    else
+    {
+        MessageBox.Show("Please select a user to edit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+}
+        private User GetUserById(int staffId)
         {
             User user = null;
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
-            string query = "SELECT * FROM staff WHERE staff_id = ?";
+            string query = "SELECT staff_id, login_name, login_password, staff_name FROM staff WHERE staff_id = ?";
 
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
@@ -159,22 +161,32 @@ namespace ITP4915M_Project.Forms
                 using (OleDbCommand command = new OleDbCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@StaffId", staffId);
-                    OleDbDataReader reader = command.ExecuteReader();
-                    if (reader.Read())
+
+                    using (OleDbDataReader reader = command.ExecuteReader())
                     {
-                        user = new User
+                        if (reader.Read())
                         {
-                            ID = Convert.ToInt32(reader["staff_id"]),
-                            LoginName = reader["login_name"].ToString(),
-                            Password = reader["login_password"].ToString(),
-                            StaffName = reader["staff_name"].ToString()
-                        };
+                            user = new User(
+                                reader.GetInt32(0),
+                                reader.GetString(1),
+                                reader.GetString(2),
+                                reader.GetString(3)
+                            );
+                        }
                     }
-                    reader.Close();
                 }
             }
 
             return user;
+        }
+
+        
+        private void SystemSecurityControl_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                LoadData();
+            }
         }
     }
 }
