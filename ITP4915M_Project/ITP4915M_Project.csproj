@@ -76,6 +76,12 @@
       <DependentUpon>DatabaseImplementation.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EditStaffForm.cs" />
+    <Compile Include="Forms\EditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditUser.Designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ItemManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,7 @@
     <Compile Include="Forms\SystemSecurityControl.Designer.cs">
       <DependentUpon>SystemSecurityControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\User.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ITP4915DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -147,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ContractManagement.resx">
       <DependentUpon>ContractManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditUser.resx">
+      <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ItemManagement.resx">
       <DependentUpon>ItemManagement.cs</DependentUpon>
