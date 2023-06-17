@@ -23,10 +23,12 @@ namespace ITP4915M_Project.Forms
 
         private void LoadData()
         {
-            string query = "SELECT a.agreement_id, s.supplier_name, p.delivery_address, a.effectived_at, a.end_at " +
-                           "FROM ((agreement AS a " +
+            string query = "SELECT a.agreement_id, s.supplier_name, p.delivery_address, a.effectived_at, a.end_at, r.restaurant_name, i.inventory_Name " +
+                           "FROM ((((agreement AS a " +
                            "INNER JOIN supplier AS s ON a.supplier_id = s.supplier_id) " +
                            "INNER JOIN purchase_order AS p ON a.agreement_id = p.agreement_id) " +
+                           "LEFT JOIN restaurant AS r ON p.delivery_address = r.restaurant_address) " +
+                           "LEFT JOIN inventory AS i ON p.delivery_address = i.restaurant_address) " +
                            "WHERE a.agreement_id = @AgreementId";
 
             try
@@ -44,7 +46,23 @@ namespace ITP4915M_Project.Forms
                             {
                                 textBox3.Text = reader["agreement_id"].ToString();
                                 txtSupplier.Text = reader["supplier_name"].ToString();
-                                txtDeliveryAddress.Text = reader["delivery_address"].ToString();
+
+                                // If delivery address matches a restaurant, show the restaurant name, 
+                                // else if it matches an inventory, show the inventory name,
+                                // else show the delivery address.
+                                if (!reader.IsDBNull(reader.GetOrdinal("restaurant_name")))
+                                {
+                                    txtDeliveryAddress.Text = reader["restaurant_name"].ToString();
+                                }
+                                else if (!reader.IsDBNull(reader.GetOrdinal("inventory_Name")))
+                                {
+                                    txtDeliveryAddress.Text = reader["inventory_Name"].ToString();
+                                }
+                                else
+                                {
+                                    txtDeliveryAddress.Text = reader["delivery_address"].ToString();
+                                }
+
                                 txtStart.Text = reader["effectived_at"].ToString();
                                 txtEnd.Text = reader["end_at"].ToString();
                             }
@@ -108,9 +126,6 @@ namespace ITP4915M_Project.Forms
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            // Perform any actions or navigation logic you want when the back button is clicked
-
-            // For example, you can close the current form and go back to the previous form
             this.Close();
         }
 

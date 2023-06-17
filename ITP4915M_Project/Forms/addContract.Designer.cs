@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.butSubmit = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.butNext = new System.Windows.Forms.Button();
+            this.lisItem = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lisAdd = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.rdoPlanned = new System.Windows.Forms.RadioButton();
@@ -47,28 +46,29 @@
             this.txtSupplier = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // butSubmit
+            // butNext
             // 
-            this.butSubmit.Location = new System.Drawing.Point(1012, 586);
-            this.butSubmit.Margin = new System.Windows.Forms.Padding(2);
-            this.butSubmit.Name = "butSubmit";
-            this.butSubmit.Size = new System.Drawing.Size(88, 34);
-            this.butSubmit.TabIndex = 3;
-            this.butSubmit.Text = "Submit";
-            this.butSubmit.UseVisualStyleBackColor = true;
+            this.butNext.Location = new System.Drawing.Point(950, 570);
+            this.butNext.Margin = new System.Windows.Forms.Padding(2);
+            this.butNext.Name = "butNext";
+            this.butNext.Size = new System.Drawing.Size(150, 34);
+            this.butNext.TabIndex = 3;
+            this.butNext.Text = "Next";
+            this.butNext.UseVisualStyleBackColor = true;
             // 
-            // listBox2
+            // lisItem
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(70, 127);
-            this.listBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(381, 244);
-            this.listBox2.TabIndex = 1;
+            this.lisItem.FormattingEnabled = true;
+            this.lisItem.ItemHeight = 15;
+            this.lisItem.Location = new System.Drawing.Point(70, 127);
+            this.lisItem.Margin = new System.Windows.Forms.Padding(2);
+            this.lisItem.Name = "lisItem";
+            this.lisItem.Size = new System.Drawing.Size(381, 244);
+            this.lisItem.TabIndex = 1;
             // 
             // textBox1
             // 
@@ -77,16 +77,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(207, 25);
             this.textBox1.TabIndex = 6;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(386, 66);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(65, 22);
-            this.btnSearch.TabIndex = 7;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // txtID
             // 
@@ -117,15 +107,15 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "ID";
             // 
-            // listBox1
+            // lisAdd
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(689, 127);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(411, 244);
-            this.listBox1.TabIndex = 16;
+            this.lisAdd.FormattingEnabled = true;
+            this.lisAdd.ItemHeight = 15;
+            this.lisAdd.Location = new System.Drawing.Point(689, 127);
+            this.lisAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.lisAdd.Name = "lisAdd";
+            this.lisAdd.Size = new System.Drawing.Size(411, 244);
+            this.lisAdd.TabIndex = 16;
             // 
             // btnAdd
             // 
@@ -150,7 +140,7 @@
             // rdoPlanned
             // 
             this.rdoPlanned.AutoSize = true;
-            this.rdoPlanned.Location = new System.Drawing.Point(152, 44);
+            this.rdoPlanned.Location = new System.Drawing.Point(152, 42);
             this.rdoPlanned.Name = "rdoPlanned";
             this.rdoPlanned.Size = new System.Drawing.Size(103, 19);
             this.rdoPlanned.TabIndex = 20;
@@ -161,7 +151,7 @@
             // rdoContract
             // 
             this.rdoContract.AutoSize = true;
-            this.rdoContract.Location = new System.Drawing.Point(404, 44);
+            this.rdoContract.Location = new System.Drawing.Point(401, 42);
             this.rdoContract.Name = "rdoContract";
             this.rdoContract.Size = new System.Drawing.Size(104, 19);
             this.rdoContract.TabIndex = 19;
@@ -191,7 +181,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(48, 48);
+            this.label6.Location = new System.Drawing.Point(48, 46);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 15);
@@ -236,13 +226,23 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(295, 44);
+            this.radioButton1.Location = new System.Drawing.Point(295, 42);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(55, 19);
             this.radioButton1.TabIndex = 27;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "BPA";
             this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(386, 66);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(65, 22);
+            this.btnSearch.TabIndex = 7;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // addContract
             // 
@@ -252,14 +252,14 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lisAdd);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.butSubmit);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.butNext);
+            this.Controls.Add(this.lisItem);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "addContract";
             this.Text = "Add Contract";
@@ -271,14 +271,13 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button butSubmit;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Button butNext;
+        private System.Windows.Forms.ListBox lisItem;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lisAdd;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.RadioButton rdoPlanned;
@@ -290,5 +289,6 @@
         private System.Windows.Forms.TextBox txtSupplier;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
