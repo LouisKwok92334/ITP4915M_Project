@@ -17,5 +17,19 @@ namespace ITP4915M_Project.Forms
             InitializeComponent();
         }
 
+        private void addContract_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtQty_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

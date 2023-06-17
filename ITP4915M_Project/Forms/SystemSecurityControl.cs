@@ -18,6 +18,7 @@ namespace ITP4915M_Project.Forms
             LoadData();
             btnDelete.Click += new EventHandler(this.btnDelete_Click);
         }
+
         private void LoadData()
         {
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
@@ -40,9 +41,6 @@ namespace ITP4915M_Project.Forms
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
-
-
-
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -95,7 +93,6 @@ namespace ITP4915M_Project.Forms
             }
         }
 
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
@@ -121,37 +118,45 @@ namespace ITP4915M_Project.Forms
                 MessageBox.Show("Please select a user to edit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private User GetUserById(int staffId)
         {
             User user = null;
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
-            string query = "SELECT staff_id, login_name, login_password, staff_name FROM staff WHERE staff_id = ?";
+            string query = "SELECT staff_id, login_name, login_password, staff_name, role_name FROM staff INNER JOIN role ON staff.role_id = role.role_id WHERE staff_id = ?";
 
             using (OleDbConnection connection = new OleDbConnection(connectionString))
+            using (OleDbCommand command = new OleDbCommand(query, connection))
             {
-                connection.Open();
-                using (OleDbCommand command = new OleDbCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@StaffId", staffId);
+                command.Parameters.AddWithValue("@StaffId", staffId);
 
+                try
+                {
+                    connection.Open();
                     using (OleDbDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            user = new User(
-                                reader.GetInt32(0),
-                                reader.GetString(1),
-                                reader.GetString(2),
-                                reader.GetString(3),
-                                reader.GetString(4)
-                            );
+                            int userId = reader.GetInt32(0);
+                            string loginName = reader.GetString(1);
+                            string loginPassword = reader.GetString(2);
+                            string staffName = reader.GetString(3);
+                            string roleName = reader.GetString(4);
+
+                            user = new User(userId, loginName, loginPassword, staffName, roleName);
                         }
                     }
+                }
+                catch (OleDbException ex)
+                {
+                    throw new Exception("An error occurred while retrieving the user: " + ex.Message, ex);
                 }
             }
 
             return user;
         }
+
+
 
 
         private void SystemSecurityControl_VisibleChanged(object sender, EventArgs e)
@@ -220,6 +225,5 @@ namespace ITP4915M_Project.Forms
                 LoadData();
             }
         }
-
     }
 }

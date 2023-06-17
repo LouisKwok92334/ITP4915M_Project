@@ -50,18 +50,25 @@ namespace ITP4915M_Project.Forms
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Validate the form inputs (e.g. check for empty fields) before updating the user
+            if (cboRole.SelectedItem != null)
+            {
+                _user.LoginName = txtLoginName.Text;
+                _user.Password = txtPassword.Text;
+                _user.StaffName = txtStaffName.Text;
+                _user.Role = cboRole.SelectedItem.ToString(); // Update the role
 
-            _user.LoginName = txtLoginName.Text;
-            _user.Password = txtPassword.Text;
-            _user.StaffName = txtStaffName.Text;
-            _user.Role = cboRole.SelectedItem.ToString(); // Update the role
+                UpdateUser(_user);
 
-            UpdateUser(_user);
-
-            // Close the form after saving the changes.
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                // Close the form after saving the changes.
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please select a role for the user.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void UpdateUser(User user)
         {

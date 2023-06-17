@@ -35,11 +35,8 @@ C:\Users\user\Desktop\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Proje
 C:\Users\user\Desktop\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.CoreCompileInputs.cache
 C:\Users\user\Desktop\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.exe
 C:\Users\user\Desktop\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.pdb
-\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\bin\Debug\Database1.accdb
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.AssemblyReference.cache
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.SuggestedBindingRedirects.cache
-\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.addAgreement.resources
-\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ContractInfo.resources
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ContractManagement.resources
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ItemManagement.resources
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.PurchaseOrderProcessing.resources
@@ -72,3 +69,12 @@ C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Pr
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.EditUser.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.addContract.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ContractDetail.resources
+\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\bin\Debug\ITP4915M_Project.exe.config
+\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\bin\Debug\ITP4915M_Project.exe
+\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\bin\Debug\ITP4915M_Project.pdb
+\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Edit.resources
+\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.addContract.resources
+\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ContractDetail.resources
+\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.EditUser.resources
+\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.MasterDataMaintenance.resources
+\\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.SystemSecurityControl.resources
