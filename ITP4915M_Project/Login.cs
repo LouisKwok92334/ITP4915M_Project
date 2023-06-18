@@ -214,5 +214,10 @@ namespace ITP4915M_Project
             }
 
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
