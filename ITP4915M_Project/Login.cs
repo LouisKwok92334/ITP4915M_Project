@@ -8,6 +8,7 @@ namespace ITP4915M_Project
     public partial class Login : Form
     {
         private const string ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
+        private string password = "";
 
         public Login()
         {
@@ -17,7 +18,7 @@ namespace ITP4915M_Project
         private void btnlogin_Click(object sender, EventArgs e)
         {
             string username = txtUserName.Text.Trim();
-            string password = txtPassword.Text;
+            string password = this.password;
 
             if (ValidateCredentials(username, password))
             {
@@ -149,31 +150,10 @@ namespace ITP4915M_Project
         }
 
         public static class GlobalUser
-<<<<<<< HEAD
         {
             public static string StaffID { get; set; }
             public static string StaffName { get; set; }
             public static string Title { get; set; }
-        }
-=======
-{
-    public static string StaffID { get; set; }
-    public static string StaffName { get; set; }
-    public static string Title { get; set; }
-}
->>>>>>> parent of 8dc441a (PasswordChar)
-
-        private void txtUserName_Enter(object sender, EventArgs e)
-        {
-            if (txtUserName.Text == "UserName")
-            {
-                txtUserName.Text = "";
-                txtUserName.ForeColor = Color.Black;
-<<<<<<< HEAD
-=======
-                txtUserName.TextAlign = HorizontalAlignment.Left;
->>>>>>> parent of 8dc441a (PasswordChar)
-            }
         }
 
         private void txtUserName_Leave(object sender, EventArgs e)
@@ -182,32 +162,17 @@ namespace ITP4915M_Project
             {
                 txtUserName.Text = "UserName";
                 txtUserName.ForeColor = Color.Silver;
-<<<<<<< HEAD
-=======
                 txtUserName.TextAlign = HorizontalAlignment.Center;
->>>>>>> parent of 8dc441a (PasswordChar)
             }
         }
 
         private void txtPassword_Enter(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 8dc441a (PasswordChar)
             if (txtPassword.Text == "Password")
             {
                 txtPassword.Text = "";
                 txtPassword.ForeColor = Color.Black;
-<<<<<<< HEAD
-                txtPassword.UseSystemPasswordChar = true;
             }
-=======
-                txtPassword.TextAlign = HorizontalAlignment.Left;
-                txtPassword.PasswordChar = '*';
-            }
-
->>>>>>> parent of 8dc441a (PasswordChar)
         }
 
         private void txtPassword_Leave(object sender, EventArgs e)
@@ -216,20 +181,27 @@ namespace ITP4915M_Project
             {
                 txtPassword.Text = "Password";
                 txtPassword.ForeColor = Color.Silver;
-<<<<<<< HEAD
-                txtPassword.UseSystemPasswordChar = false;
             }
-=======
-                txtPassword.TextAlign = HorizontalAlignment.Center;
-                txtPassword.PasswordChar = '\0';
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtPassword.Text == "Password")
+            {
+                txtPassword.Text = "";
+                txtPassword.ForeColor = Color.Black;
             }
 
->>>>>>> parent of 8dc441a (PasswordChar)
+            password += e.KeyChar;
+            txtPassword.Text += "*";
+            txtPassword.Select(txtPassword.Text.Length, 0);
+            e.Handled = true;
         }
+
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            // Code to execute when the login form is loaded
         }
     }
 }
