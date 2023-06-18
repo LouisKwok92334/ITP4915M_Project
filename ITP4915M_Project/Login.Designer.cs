@@ -51,7 +51,7 @@ namespace ITP4915M_Project
             this.pictureBox1.Image = global::ITP4915M_Project.Properties.Resources.Logo;
             this.pictureBox1.Location = new System.Drawing.Point(-4, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(312, 600);
+            this.pictureBox1.Size = new System.Drawing.Size(312, 554);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -61,9 +61,9 @@ namespace ITP4915M_Project
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Black", 30F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(28, 957);
+            this.label1.Location = new System.Drawing.Point(28, 883);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(274, 67);
+            this.label1.Size = new System.Drawing.Size(218, 54);
             this.label1.TabIndex = 1;
             this.label1.Text = "Yummy ®";
             // 
@@ -72,9 +72,9 @@ namespace ITP4915M_Project
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Black", 10F);
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(1462, 651);
+            this.label2.Location = new System.Drawing.Point(1462, 601);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(290, 23);
+            this.label2.Size = new System.Drawing.Size(240, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Make sure your account is secure";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -84,9 +84,9 @@ namespace ITP4915M_Project
             this.label3.AutoSize = true;
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(448, 651);
+            this.label3.Location = new System.Drawing.Point(448, 601);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(166, 28);
+            this.label3.Size = new System.Drawing.Size(134, 21);
             this.label3.TabIndex = 5;
             this.label3.Text = "Forget password ?";
             // 
@@ -97,7 +97,7 @@ namespace ITP4915M_Project
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(-1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(318, 1034);
+            this.panel1.Size = new System.Drawing.Size(318, 954);
             this.panel1.TabIndex = 7;
             // 
             // txtUserName
@@ -105,7 +105,7 @@ namespace ITP4915M_Project
             this.txtUserName.AutoCompleteCustomSource = null;
             this.txtUserName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtUserName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtUserName.BorderColor = System.Drawing.Color.Transparent;
+            this.txtUserName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtUserName.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtUserName.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtUserName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
@@ -114,12 +114,12 @@ namespace ITP4915M_Project
             this.txtUserName.Image = null;
             this.txtUserName.IsDerivedStyle = true;
             this.txtUserName.Lines = null;
-            this.txtUserName.Location = new System.Drawing.Point(440, 302);
+            this.txtUserName.Location = new System.Drawing.Point(440, 279);
             this.txtUserName.MaxLength = 32767;
             this.txtUserName.Multiline = false;
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.ReadOnly = false;
-            this.txtUserName.Size = new System.Drawing.Size(1312, 79);
+            this.txtUserName.Size = new System.Drawing.Size(1312, 73);
             this.txtUserName.Style = MetroSet_UI.Enums.Style.Light;
             this.txtUserName.StyleManager = null;
             this.txtUserName.TabIndex = 8;
@@ -139,7 +139,7 @@ namespace ITP4915M_Project
             this.btnlogin.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(207)))), ((int)(((byte)(255)))));
             this.btnlogin.HoverTextColor = System.Drawing.Color.White;
             this.btnlogin.IsDerivedStyle = true;
-            this.btnlogin.Location = new System.Drawing.Point(998, 773);
+            this.btnlogin.Location = new System.Drawing.Point(998, 714);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
             this.btnlogin.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
@@ -147,7 +147,7 @@ namespace ITP4915M_Project
             this.btnlogin.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
             this.btnlogin.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(147)))), ((int)(((byte)(195)))));
             this.btnlogin.PressTextColor = System.Drawing.Color.White;
-            this.btnlogin.Size = new System.Drawing.Size(207, 65);
+            this.btnlogin.Size = new System.Drawing.Size(207, 60);
             this.btnlogin.Style = MetroSet_UI.Enums.Style.Light;
             this.btnlogin.StyleManager = null;
             this.btnlogin.TabIndex = 9;
@@ -160,7 +160,7 @@ namespace ITP4915M_Project
             this.txtPassword.AutoCompleteCustomSource = null;
             this.txtPassword.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtPassword.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtPassword.BorderColor = System.Drawing.Color.Transparent;
+            this.txtPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtPassword.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.txtPassword.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
             this.txtPassword.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
@@ -169,28 +169,28 @@ namespace ITP4915M_Project
             this.txtPassword.Image = null;
             this.txtPassword.IsDerivedStyle = true;
             this.txtPassword.Lines = null;
-            this.txtPassword.Location = new System.Drawing.Point(440, 539);
+            this.txtPassword.Location = new System.Drawing.Point(440, 498);
             this.txtPassword.MaxLength = 32767;
             this.txtPassword.Multiline = false;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.ReadOnly = false;
-            this.txtPassword.Size = new System.Drawing.Size(1312, 79);
+            this.txtPassword.Size = new System.Drawing.Size(1312, 73);
             this.txtPassword.Style = MetroSet_UI.Enums.Style.Light;
             this.txtPassword.StyleManager = null;
             this.txtPassword.TabIndex = 10;
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPassword.ThemeAuthor = "Narwin";
             this.txtPassword.ThemeName = "MetroLite";
-            this.txtPassword.UseSystemPasswordChar = false;
+            this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.WatermarkText = "";
             // 
             // metroSetLabel1
             // 
             this.metroSetLabel1.Font = new System.Drawing.Font("Segoe UI Black", 50F, System.Drawing.FontStyle.Bold);
             this.metroSetLabel1.IsDerivedStyle = true;
-            this.metroSetLabel1.Location = new System.Drawing.Point(406, 43);
+            this.metroSetLabel1.Location = new System.Drawing.Point(406, 40);
             this.metroSetLabel1.Name = "metroSetLabel1";
-            this.metroSetLabel1.Size = new System.Drawing.Size(321, 128);
+            this.metroSetLabel1.Size = new System.Drawing.Size(321, 118);
             this.metroSetLabel1.Style = MetroSet_UI.Enums.Style.Light;
             this.metroSetLabel1.StyleManager = null;
             this.metroSetLabel1.TabIndex = 11;
@@ -206,7 +206,7 @@ namespace ITP4915M_Project
             this.metroSetControlBox1.CloseNormalForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
             this.metroSetControlBox1.IsDerivedStyle = true;
-            this.metroSetControlBox1.Location = new System.Drawing.Point(1790, 12);
+            this.metroSetControlBox1.Location = new System.Drawing.Point(1790, 11);
             this.metroSetControlBox1.MaximizeBox = true;
             this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.metroSetControlBox1.MaximizeHoverForeColor = System.Drawing.Color.Gray;
@@ -228,9 +228,9 @@ namespace ITP4915M_Project
             // 
             this.metroSetLabel2.Font = new System.Drawing.Font("Segoe UI Black", 20F);
             this.metroSetLabel2.IsDerivedStyle = true;
-            this.metroSetLabel2.Location = new System.Drawing.Point(440, 231);
+            this.metroSetLabel2.Location = new System.Drawing.Point(440, 213);
             this.metroSetLabel2.Name = "metroSetLabel2";
-            this.metroSetLabel2.Size = new System.Drawing.Size(204, 50);
+            this.metroSetLabel2.Size = new System.Drawing.Size(204, 46);
             this.metroSetLabel2.Style = MetroSet_UI.Enums.Style.Light;
             this.metroSetLabel2.StyleManager = null;
             this.metroSetLabel2.TabIndex = 13;
@@ -242,9 +242,9 @@ namespace ITP4915M_Project
             // 
             this.metroSetLabel3.Font = new System.Drawing.Font("Segoe UI Black", 20F);
             this.metroSetLabel3.IsDerivedStyle = true;
-            this.metroSetLabel3.Location = new System.Drawing.Point(440, 473);
+            this.metroSetLabel3.Location = new System.Drawing.Point(440, 437);
             this.metroSetLabel3.Name = "metroSetLabel3";
-            this.metroSetLabel3.Size = new System.Drawing.Size(186, 40);
+            this.metroSetLabel3.Size = new System.Drawing.Size(186, 37);
             this.metroSetLabel3.Style = MetroSet_UI.Enums.Style.Light;
             this.metroSetLabel3.StyleManager = null;
             this.metroSetLabel3.TabIndex = 14;
@@ -254,10 +254,10 @@ namespace ITP4915M_Project
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.ClientSize = new System.Drawing.Size(1902, 954);
             this.Controls.Add(this.metroSetLabel3);
             this.Controls.Add(this.metroSetLabel2);
             this.Controls.Add(this.metroSetControlBox1);
