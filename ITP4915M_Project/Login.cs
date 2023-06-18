@@ -169,51 +169,7 @@ namespace ITP4915M_Project
     public static string StaffName { get; set; }
     public static string Title { get; set; }
 }
-
-        private void txtUserName_Enter(object sender, EventArgs e)
-        {
-            if (txtUserName.Text == "UserName")
-            {
-                txtUserName.Text = "";
-                txtUserName.ForeColor = Color.Black;
-                txtUserName.TextAlign = HorizontalAlignment.Left;
-            }
-        }
-
-        private void txtUserName_Leave(object sender, EventArgs e)
-        {
-            if (txtUserName.Text == "")
-            {
-                txtUserName.Text = "UserName";
-                txtUserName.ForeColor = Color.Silver;
-                txtUserName.TextAlign = HorizontalAlignment.Center;
-            }
-        }
-
-        private void txtPassword_Enter(object sender, EventArgs e)
-        {
-
-            if (txtPassword.Text == "Password")
-            {
-                txtPassword.Text = "";
-                txtPassword.ForeColor = Color.Black;
-                txtPassword.TextAlign = HorizontalAlignment.Left;
-                txtPassword.PasswordChar = '*';
-            }
-
-        }
-
-        private void txtPassword_Leave(object sender, EventArgs e)
-        {
-            if (txtPassword.Text == "")
-            {
-                txtPassword.Text = "Password";
-                txtPassword.ForeColor = Color.Silver;
-                txtPassword.TextAlign = HorizontalAlignment.Center;
-                txtPassword.PasswordChar = '\0';
-            }
-
-        }
+      
 
         private void Login_Load(object sender, EventArgs e)
         {
