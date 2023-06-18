@@ -149,11 +149,19 @@ namespace ITP4915M_Project
         }
 
         public static class GlobalUser
+<<<<<<< HEAD
         {
             public static string StaffID { get; set; }
             public static string StaffName { get; set; }
             public static string Title { get; set; }
         }
+=======
+{
+    public static string StaffID { get; set; }
+    public static string StaffName { get; set; }
+    public static string Title { get; set; }
+}
+>>>>>>> parent of 8dc441a (PasswordChar)
 
         private void txtUserName_Enter(object sender, EventArgs e)
         {
@@ -161,6 +169,10 @@ namespace ITP4915M_Project
             {
                 txtUserName.Text = "";
                 txtUserName.ForeColor = Color.Black;
+<<<<<<< HEAD
+=======
+                txtUserName.TextAlign = HorizontalAlignment.Left;
+>>>>>>> parent of 8dc441a (PasswordChar)
             }
         }
 
@@ -170,17 +182,32 @@ namespace ITP4915M_Project
             {
                 txtUserName.Text = "UserName";
                 txtUserName.ForeColor = Color.Silver;
+<<<<<<< HEAD
+=======
+                txtUserName.TextAlign = HorizontalAlignment.Center;
+>>>>>>> parent of 8dc441a (PasswordChar)
             }
         }
 
         private void txtPassword_Enter(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 8dc441a (PasswordChar)
             if (txtPassword.Text == "Password")
             {
                 txtPassword.Text = "";
                 txtPassword.ForeColor = Color.Black;
+<<<<<<< HEAD
                 txtPassword.UseSystemPasswordChar = true;
             }
+=======
+                txtPassword.TextAlign = HorizontalAlignment.Left;
+                txtPassword.PasswordChar = '*';
+            }
+
+>>>>>>> parent of 8dc441a (PasswordChar)
         }
 
         private void txtPassword_Leave(object sender, EventArgs e)
@@ -189,8 +216,15 @@ namespace ITP4915M_Project
             {
                 txtPassword.Text = "Password";
                 txtPassword.ForeColor = Color.Silver;
+<<<<<<< HEAD
                 txtPassword.UseSystemPasswordChar = false;
             }
+=======
+                txtPassword.TextAlign = HorizontalAlignment.Center;
+                txtPassword.PasswordChar = '\0';
+            }
+
+>>>>>>> parent of 8dc441a (PasswordChar)
         }
 
         private void Login_Load(object sender, EventArgs e)
