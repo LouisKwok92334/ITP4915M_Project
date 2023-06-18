@@ -7,7 +7,6 @@ namespace ITP4915M_Project
 {
     public partial class Login : Form
     {
-        // Database connection string
         private const string ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
 
         public Login()
@@ -15,41 +14,30 @@ namespace ITP4915M_Project
             InitializeComponent();
         }
 
-        // Login button click event
         private void btnlogin_Click(object sender, EventArgs e)
         {
             string username = txtUserName.Text.Trim();
             string password = txtPassword.Text;
 
-            // Validate credentials
             if (ValidateCredentials(username, password))
             {
-                // Successful login
                 MessageBox.Show("Login successful!");
 
-                // Set global user properties
                 GlobalUser.StaffID = GetStaffID(username);
                 GlobalUser.StaffName = GetStaffName(username);
                 GlobalUser.Title = GetTitle(username);
 
-                // Perform any additional actions or open the main form
-                // ...
                 MainMenu mainMenu = new MainMenu();
                 mainMenu.Show();
 
-                // Hide the login form
                 this.Hide();
-
-
             }
             else
             {
-                // Invalid credentials
                 MessageBox.Show("Invalid username or password. Please try again.");
             }
         }
 
-        // Validate user credentials
         private bool ValidateCredentials(string username, string password)
         {
             bool isValid = false;
@@ -79,7 +67,6 @@ namespace ITP4915M_Project
             return isValid;
         }
 
-        // Get staff ID from the database
         private string GetStaffID(string username)
         {
             string staffID = null;
@@ -107,7 +94,6 @@ namespace ITP4915M_Project
             return staffID;
         }
 
-        // Get staff name from the database
         private string GetStaffName(string username)
         {
             string staffName = null;
@@ -135,7 +121,6 @@ namespace ITP4915M_Project
             return staffName;
         }
 
-        // Get title from the database
         private string GetTitle(string username)
         {
             string title = null;
@@ -164,11 +149,11 @@ namespace ITP4915M_Project
         }
 
         public static class GlobalUser
-{
-    public static string StaffID { get; set; }
-    public static string StaffName { get; set; }
-    public static string Title { get; set; }
-}
+        {
+            public static string StaffID { get; set; }
+            public static string StaffName { get; set; }
+            public static string Title { get; set; }
+        }
 
         private void txtUserName_Enter(object sender, EventArgs e)
         {
@@ -176,7 +161,6 @@ namespace ITP4915M_Project
             {
                 txtUserName.Text = "";
                 txtUserName.ForeColor = Color.Black;
-                txtUserName.TextAlign = HorizontalAlignment.Left;
             }
         }
 
@@ -186,21 +170,17 @@ namespace ITP4915M_Project
             {
                 txtUserName.Text = "UserName";
                 txtUserName.ForeColor = Color.Silver;
-                txtUserName.TextAlign = HorizontalAlignment.Center;
             }
         }
 
         private void txtPassword_Enter(object sender, EventArgs e)
         {
-
             if (txtPassword.Text == "Password")
             {
                 txtPassword.Text = "";
                 txtPassword.ForeColor = Color.Black;
-                txtPassword.TextAlign = HorizontalAlignment.Left;
-                txtPassword.PasswordChar = '*';
+                txtPassword.UseSystemPasswordChar = true;
             }
-
         }
 
         private void txtPassword_Leave(object sender, EventArgs e)
@@ -209,10 +189,8 @@ namespace ITP4915M_Project
             {
                 txtPassword.Text = "Password";
                 txtPassword.ForeColor = Color.Silver;
-                txtPassword.TextAlign = HorizontalAlignment.Center;
-                txtPassword.PasswordChar = '\0';
+                txtPassword.UseSystemPasswordChar = false;
             }
-
         }
 
         private void Login_Load(object sender, EventArgs e)
