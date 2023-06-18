@@ -11,11 +11,13 @@ namespace ITP4915M_Project.Forms
         private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
         private List<string> itemNames = new List<string>();
         private List<string> addedItems = new List<string>();
+        private List<string> supplierNames = new List<string>(); // Declare this at the top of the class
 
         public addContract()
         {
             InitializeComponent();
             LoadItems(); // Load the items from the database
+            LoadSuppliers(); // Load the supplier names from the database
         }
 
         private void LoadItems()
@@ -47,6 +49,40 @@ namespace ITP4915M_Project.Forms
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while loading items: " + ex.Message);
+            }
+        }
+
+        // Add this method to your class
+        private void LoadSuppliers()
+        {
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Load supplier names from the "Supplier" table
+                    string supplierQuery = "SELECT supplier_name FROM Supplier";
+                    OleDbCommand supplierCommand = new OleDbCommand(supplierQuery, connection);
+                    OleDbDataReader supplierReader = supplierCommand.ExecuteReader();
+
+                    while (supplierReader.Read())
+                    {
+                        string supplierName = supplierReader.GetString(0); // Assuming supplier_name is the first column
+                        supplierNames.Add(supplierName);
+                    }
+
+                    cmoSupplier.DataSource = null;
+                    cmoSupplier.DataSource = supplierNames;
+
+                    supplierReader.Close();
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading suppliers: " + ex.Message);
             }
         }
 
@@ -83,7 +119,6 @@ namespace ITP4915M_Project.Forms
                 }
             }
         }
-
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
@@ -131,6 +166,11 @@ namespace ITP4915M_Project.Forms
         }
 
         private void butNext_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmoSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
