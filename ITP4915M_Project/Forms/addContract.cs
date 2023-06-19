@@ -93,13 +93,39 @@ namespace ITP4915M_Project.Forms
 
             lisAdd.DataSource = null;
             lisAdd.DataSource = addedItems;
+
+            // Add the item prices to lisAdd display
+            List<string> itemsWithPrices = new List<string>();
+            foreach (string addedItem in addedItems)
+            {
+                string[] parts = addedItem.Split('-');
+                if (parts.Length > 0)
+                {
+                    string itemName = parts[0].Trim();
+                    if (itemPrices.TryGetValue(itemName, out decimal itemPrice))
+                    {
+                        string itemWithPrice = $"{addedItem} - Price: {itemPrice.ToString("0.00")}";
+                        itemsWithPrices.Add(itemWithPrice);
+                    }
+                }
+            }
+            lisAdd.DataSource = null;
+            lisAdd.DataSource = itemsWithPrices;
         }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (lisItem.SelectedItem != null)
             {
                 string selectedItem = lisItem.SelectedItem.ToString();
+
+                // Check if the item is already added
+                if (addedItems.Contains(selectedItem))
+                {
+                    MessageBox.Show("This item is already added.");
+                    return;
+                }
 
                 // Prompt the user to enter the quantity
                 string quantity = Prompt.ShowDialog("Enter the quantity for " + selectedItem, "Enter Quantity");
@@ -149,6 +175,7 @@ namespace ITP4915M_Project.Forms
                 }
             }
         }
+
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
@@ -236,20 +263,135 @@ namespace ITP4915M_Project.Forms
                 return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
             }
         }
-
         private void butNext_Click(object sender, EventArgs e)
         {
-            // Next button click event
+            if (rdoBpa.Checked)
+            {
+
+                MessageBox.Show("Your BPA is confirm");
+
+
+            }
+            else if (rdoPlanned.Checked)
+            {
+
+                DialogResult urgentOrderResult = MessageBox.Show("Is this an urgent order?", "Urgent Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (urgentOrderResult == DialogResult.Yes)
+                {
+             
+                    List<string> restaurantNames = GetRestaurantNamesFromDatabase();
+
+                    if (restaurantNames.Count > 0)
+                    {
+                       
+                        string selectedRestaurant = CustomPrompt.ShowDialog("Select restaurant:", "Restaurant Selection", restaurantNames.ToArray());
+
+                        if (!string.IsNullOrEmpty(selectedRestaurant))
+                        {
+                    
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please select a restaurant.", "Restaurant Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No restaurants found in the database.", "Restaurant Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("The goods will be delivered to the warehouse.", "Non-Urgent Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a contract type.");
+            }
         }
 
-        private void cmoSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        public static class CustomPrompt
         {
-            // Supplier combo box selected index changed event
+            public static string ShowDialog(string text, string caption)
+            {
+                Form prompt = new Form()
+                {
+                    Width = 500,
+                    Height = 170,
+                    FormBorderStyle = FormBorderStyle.FixedDialog,
+                    Text = caption,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
+                Button confirmation = new Button() { Text = "OK", Left = 350, Width = 100, Top = 90 };
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+                prompt.Controls.Add(textBox);
+                prompt.Controls.Add(confirmation);
+                prompt.Controls.Add(textLabel);
+                prompt.AcceptButton = confirmation;
+
+                return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+            }
+
+            public static string ShowDialog(string text, string caption, string[] options)
+            {
+                Form prompt = new Form()
+                {
+                    Width = 500,
+                    Height = 170,
+                    FormBorderStyle = FormBorderStyle.FixedDialog,
+                    Text = caption,
+                    StartPosition = FormStartPosition.CenterScreen
+                };
+                Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+                ComboBox comboBox = new ComboBox() { Left = 50, Top = 50, Width = 400 };
+                comboBox.Items.AddRange(options);
+                Button confirmation = new Button() { Text = "Add", Left = 350, Width = 100, Top = 90, DialogResult = DialogResult.OK };
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+                prompt.Controls.Add(comboBox);
+                prompt.Controls.Add(confirmation);
+                prompt.Controls.Add(textLabel);
+                prompt.AcceptButton = confirmation;
+
+                return prompt.ShowDialog() == DialogResult.OK ? comboBox.SelectedItem?.ToString() : null;
+            }
         }
 
-        private void txtPrice_TextChanged(object sender, EventArgs e)
+        private List<string> GetRestaurantNamesFromDatabase()
         {
-            // Price text box text changed event
+            List<string> restaurantNames = new List<string>();
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string restaurantQuery = "SELECT restaurant_name FROM restaurant";
+                    OleDbCommand restaurantCommand = new OleDbCommand(restaurantQuery, connection);
+                    OleDbDataReader restaurantReader = restaurantCommand.ExecuteReader();
+
+                    while (restaurantReader.Read())
+                    {
+                        string restaurantName = restaurantReader.GetString(0); // Assuming restaurant_name is the first column
+                        restaurantNames.Add(restaurantName);
+                    }
+
+                    restaurantReader.Close();
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading restaurant names: " + ex.Message);
+            }
+
+            return restaurantNames;
         }
     }
 }

@@ -59,9 +59,9 @@ namespace ITP4915M_Project.Forms
                 endDate = dateTimePicker2.Value.Date.AddDays(1).AddSeconds(-1);
 
             if (rdoPlanned.Checked)
-                contractType = "Planned P.O.";
+                contractType = "Planned";
             else if (rdoContract.Checked)
-                contractType = "Standard P.O.";
+                contractType = "Standard";
             else if (radioButton1.Checked)
                 contractType = "BPA";
 
