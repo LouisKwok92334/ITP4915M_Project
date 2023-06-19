@@ -12,6 +12,7 @@ namespace ITP4915M_Project.Forms
         private List<string> itemNames = new List<string>();
         private List<string> addedItems = new List<string>();
         private List<string> supplierNames = new List<string>(); // Declare this at the top of the class
+        private Dictionary<string, decimal> itemPrices = new Dictionary<string, decimal>();
 
         public addContract()
         {
@@ -52,7 +53,6 @@ namespace ITP4915M_Project.Forms
             }
         }
 
-        // Add this method to your class
         private void LoadSuppliers()
         {
             try
@@ -108,15 +108,40 @@ namespace ITP4915M_Project.Forms
                 int quantityNum;
                 if (int.TryParse(quantity, out quantityNum))
                 {
-                    // Add the item with the quantity to the list
-                    addedItems.Add(selectedItem + " - Quantity: " + quantityNum);
-                    itemNames.Remove(selectedItem);
+                    // Prompt the user to enter the item price
+                    string itemPriceInput = Prompt.ShowDialog("Enter the price for " + selectedItem, "Enter Price");
 
-                    // Calculate the total price for the selected item and quantity
-                    decimal totalPrice = GetTotalPriceForItem(selectedItem, quantityNum);
-                    txtPrice.Text = "Total Price: " + totalPrice.ToString("0.00");
+                    // Check if item price is a valid number
+                    decimal itemPrice;
+                    if (decimal.TryParse(itemPriceInput, out itemPrice))
+                    {
+                        // Calculate the total price for the selected item and quantity
+                        decimal totalPrice = itemPrice * quantityNum;
 
-                    UpdateListBoxes();
+                        // Add the total price to the existing txtTotalPrice value
+                        if (decimal.TryParse(txtTotalPrice.Text, out decimal currentTotalPrice))
+                        {
+                            decimal newTotalPrice = currentTotalPrice + totalPrice;
+                            txtTotalPrice.Text = newTotalPrice.ToString("0.00");
+                        }
+                        else
+                        {
+                            txtTotalPrice.Text = totalPrice.ToString("0.00");
+                        }
+
+                        // Add the item and its price to the dictionary
+                        itemPrices[selectedItem] = itemPrice;
+
+                        // Add the item with the quantity to the list
+                        addedItems.Add(selectedItem + " - Quantity: " + quantityNum);
+                        itemNames.Remove(selectedItem);
+
+                        UpdateListBoxes();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid item price. Please enter a valid number.");
+                    }
                 }
                 else
                 {
@@ -124,43 +149,6 @@ namespace ITP4915M_Project.Forms
                 }
             }
         }
-
-
-        private decimal GetTotalPriceForItem(string itemName, int quantity)
-        {
-            decimal price = 0;
-
-            try
-            {
-                using (OleDbConnection connection = new OleDbConnection(connectionString))
-                {
-                    connection.Open();
-
-                    // Fetch price for the selected item from the "item" table
-                    string priceQuery = $"SELECT price FROM item WHERE item_name = '{itemName}'";
-                    OleDbCommand priceCommand = new OleDbCommand(priceQuery, connection);
-
-                    OleDbDataReader priceReader = priceCommand.ExecuteReader();
-
-                    if (priceReader.Read())
-                    {
-                        price = priceReader.GetDecimal(0); // Assuming price is the first column and of type decimal
-                    }
-
-                    priceReader.Close();
-                    connection.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while fetching price: " + ex.Message + "\n" + ex.StackTrace);
-            }
-
-            return price * quantity; // Calculate total price
-        }
-
-
-
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
@@ -174,13 +162,55 @@ namespace ITP4915M_Project.Forms
                 {
                     string itemName = parts[0].Trim(); // Get the item name, trim is used to remove leading or trailing spaces
 
-                    // Add the item name back to itemNames and remove the item with quantity from addedItems
-                    itemNames.Add(itemName);
+                    // Extract the quantity from the selected item string
+                    int quantity = ExtractQuantityFromSelectedItem(selectedItem);
+
+                    // Calculate the item price
+                    decimal itemPrice = GetItemPrice(itemName);
+
+                    // Calculate the total price to be deducted
+                    decimal totalPriceToDeduct = itemPrice * quantity;
+
+                    // Subtract the total price to be deducted from the existing txtTotalPrice value
+                    if (decimal.TryParse(txtTotalPrice.Text, out decimal currentTotalPrice))
+                    {
+                        decimal newTotalPrice = currentTotalPrice - totalPriceToDeduct;
+                        txtTotalPrice.Text = newTotalPrice.ToString("0.00");
+                    }
+
+                    // Remove the item from the dictionary and the list
+                    itemPrices.Remove(itemName);
                     addedItems.Remove(selectedItem);
+                    itemNames.Add(itemName);
                     UpdateListBoxes();
                 }
             }
         }
+
+        private int ExtractQuantityFromSelectedItem(string selectedItem)
+        {
+            string[] parts = selectedItem.Split('-');
+            if (parts.Length > 1)
+            {
+                string quantityPart = parts[1].Trim(); // Get the quantity part
+                string quantityString = quantityPart.Replace("Quantity:", "").Trim(); // Extract the quantity value
+                if (int.TryParse(quantityString, out int quantity))
+                {
+                    return quantity;
+                }
+            }
+            return 0;
+        }
+
+        private decimal GetItemPrice(string itemName)
+        {
+            if (itemPrices.TryGetValue(itemName, out decimal itemPrice))
+            {
+                return itemPrice;
+            }
+            return 0;
+        }
+
 
         public static class Prompt
         {
@@ -209,17 +239,17 @@ namespace ITP4915M_Project.Forms
 
         private void butNext_Click(object sender, EventArgs e)
         {
-
+            // Next button click event
         }
 
         private void cmoSupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            // Supplier combo box selected index changed event
         }
 
         private void txtPrice_TextChanged(object sender, EventArgs e)
         {
-
+            // Price text box text changed event
         }
     }
 }

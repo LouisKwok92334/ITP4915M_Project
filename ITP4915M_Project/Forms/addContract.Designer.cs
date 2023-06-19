@@ -39,14 +39,14 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.rdoPlanned = new System.Windows.Forms.RadioButton();
             this.rdoContract = new System.Windows.Forms.RadioButton();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPrice = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmoSupplier = new System.Windows.Forms.ComboBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTotalPrice = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -163,26 +163,6 @@
             this.rdoContract.Text = "Standard P.O";
             this.rdoContract.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 116);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 12);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "Total Price";
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.Location = new System.Drawing.Point(114, 114);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.ReadOnly = true;
-            this.txtPrice.Size = new System.Drawing.Size(138, 22);
-            this.txtPrice.TabIndex = 22;
-            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -205,19 +185,19 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtTotalPrice);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cmoSupplier);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.rdoContract);
             this.groupBox1.Controls.Add(this.rdoPlanned);
-            this.groupBox1.Controls.Add(this.txtPrice);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(52, 322);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(470, 162);
+            this.groupBox1.Size = new System.Drawing.Size(462, 162);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Contract Info";
@@ -225,7 +205,7 @@
             // cmoSupplier
             // 
             this.cmoSupplier.FormattingEnabled = true;
-            this.cmoSupplier.Location = new System.Drawing.Point(114, 75);
+            this.cmoSupplier.Location = new System.Drawing.Point(114, 67);
             this.cmoSupplier.Name = "cmoSupplier";
             this.cmoSupplier.Size = new System.Drawing.Size(138, 20);
             this.cmoSupplier.TabIndex = 28;
@@ -252,6 +232,25 @@
             this.btnSearch.TabIndex = 7;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(36, 122);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 12);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Total Price";
+            // 
+            // txtTotalPrice
+            // 
+            this.txtTotalPrice.Location = new System.Drawing.Point(114, 112);
+            this.txtTotalPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTotalPrice.Name = "txtTotalPrice";
+            this.txtTotalPrice.ReadOnly = true;
+            this.txtTotalPrice.Size = new System.Drawing.Size(138, 22);
+            this.txtTotalPrice.TabIndex = 30;
             // 
             // addContract
             // 
@@ -291,13 +290,13 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.RadioButton rdoPlanned;
         private System.Windows.Forms.RadioButton rdoContract;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ComboBox cmoSupplier;
+        private System.Windows.Forms.TextBox txtTotalPrice;
+        private System.Windows.Forms.Label label2;
     }
 }
