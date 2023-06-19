@@ -104,3 +104,28 @@ C:\Users\Yip\Desktop\4915_Project\ITP4915M_PS\ITP4915M_Project\ITP4915M_Project\
 C:\Users\Yip\Desktop\4915_Project\ITP4915M_PS\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.pdb
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\bin\Debug\MetroSet UI.dll
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.CopyComplete
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\bin\Debug\ITP4915M_Project.exe.config
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\bin\Debug\ITP4915M_Project.exe
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\bin\Debug\ITP4915M_Project.pdb
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\bin\Debug\MetroSet UI.dll
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.AssemblyReference.cache
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.SuggestedBindingRedirects.cache
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Edit.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.addContract.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ContractDetail.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ContractManagement.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.EditUser.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ItemManagement.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.MasterDataMaintenance.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.PurchaseOrderProcessing.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.RequestManagement.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.SystemSecurityControl.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Login.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.MainMenu.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Properties.Resources.resources
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.GenerateResource.cache
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.CoreCompileInputs.cache
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.CopyComplete
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.exe
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.pdb
+C:\Users\vince\OneDrive\桌面\IVE 4915M\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ContractEdit.resources

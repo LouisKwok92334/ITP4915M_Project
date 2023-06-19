@@ -184,7 +184,16 @@ namespace ITP4915M_Project.Forms
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            if (dataGridView1.CurrentRow != null)
+            {
+                string agreementId = dataGridView1.CurrentRow.Cells["agreement_id"].Value.ToString(); // Make sure to use your correct column name for agreement_id.
+                ContractEdit contractEditForm = new ContractEdit(agreementId);
+                contractEditForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a contract from the list.");
+            }
         }
     }
 }
