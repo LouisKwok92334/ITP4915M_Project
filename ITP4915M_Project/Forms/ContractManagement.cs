@@ -62,8 +62,6 @@ namespace ITP4915M_Project.Forms
                 contractType = "Planned";
             else if (rdoContract.Checked)
                 contractType = "Standard";
-            else if (radioButton1.Checked)
-                contractType = "BPA";
 
             if (cxActive.Checked && !cbInactive.Checked)
                 status = "Active";
@@ -134,7 +132,7 @@ namespace ITP4915M_Project.Forms
         private void LoadData()
         {
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
-            string query = "SELECT agreement_id, supplier_id, agreement_type, created_at, end_at FROM agreement";
+            string query = "SELECT agreement_id AS AgreementId, supplier_id, agreement_type, created_at, end_at FROM agreement";
 
             try
             {
@@ -154,16 +152,17 @@ namespace ITP4915M_Project.Forms
             }
         }
 
+
         private void btnReset_Click(object sender, EventArgs e)
         {
             LoadData();
-            
+
             txtSearch.Text = "";
             dateTimePicker1.Checked = false;
             dateTimePicker2.Checked = false;
             rdoPlanned.Checked = false;
             rdoContract.Checked = false;
-            radioButton1.Checked = false;
+
             cxActive.Checked = false;
             cbInactive.Checked = false;
         }
@@ -172,28 +171,17 @@ namespace ITP4915M_Project.Forms
         {
             if (dataGridView1.CurrentRow != null)
             {
-                string agreementId = dataGridView1.CurrentRow.Cells["agreement_id"].Value.ToString(); // Make sure to use your correct column name for agreement_id.
-                ContractDetail contractDetailForm = new ContractDetail(agreementId);
-                contractDetailForm.Show();
-            }
-            else
-            {
-                MessageBox.Show("Please select a contract from the list.");
+                DataGridViewRow selectedRow = dataGridView1.CurrentRow;
+                string agreementId = selectedRow.Cells["AgreementId"].Value.ToString();
+                AgreementDetail agreementDetailForm = new AgreementDetail(agreementId);
+                agreementDetailForm.Show();
             }
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void btnViewBPA_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow != null)
-            {
-                string agreementId = dataGridView1.CurrentRow.Cells["agreement_id"].Value.ToString(); // Make sure to use your correct column name for agreement_id.
-                ContractEdit contractEditForm = new ContractEdit(agreementId);
-                contractEditForm.Show();
-            }
-            else
-            {
-                MessageBox.Show("Please select a contract from the list.");
-            }
+            BPA bpa = new BPA();
+            bpa.Show();
         }
     }
 }
