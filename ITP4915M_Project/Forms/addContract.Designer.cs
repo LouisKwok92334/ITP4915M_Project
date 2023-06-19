@@ -44,11 +44,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmoSupplier = new System.Windows.Forms.ComboBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.txtQty = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmoSupplier = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,6 +181,7 @@
             this.txtPrice.ReadOnly = true;
             this.txtPrice.Size = new System.Drawing.Size(138, 22);
             this.txtPrice.TabIndex = 22;
+            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
             // 
             // label6
             // 
@@ -223,6 +222,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Contract Info";
             // 
+            // cmoSupplier
+            // 
+            this.cmoSupplier.FormattingEnabled = true;
+            this.cmoSupplier.Location = new System.Drawing.Point(114, 75);
+            this.cmoSupplier.Name = "cmoSupplier";
+            this.cmoSupplier.Size = new System.Drawing.Size(138, 20);
+            this.cmoSupplier.TabIndex = 28;
+            this.cmoSupplier.SelectedIndexChanged += new System.EventHandler(this.cmoSupplier_SelectedIndexChanged);
+            // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
@@ -245,41 +253,11 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // txtQty
-            // 
-            this.txtQty.Location = new System.Drawing.Point(690, 322);
-            this.txtQty.Margin = new System.Windows.Forms.Padding(2);
-            this.txtQty.Name = "txtQty";
-            this.txtQty.ReadOnly = true;
-            this.txtQty.Size = new System.Drawing.Size(138, 22);
-            this.txtQty.TabIndex = 28;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(634, 327);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 12);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Quantity";
-            // 
-            // cmoSupplier
-            // 
-            this.cmoSupplier.FormattingEnabled = true;
-            this.cmoSupplier.Location = new System.Drawing.Point(114, 75);
-            this.cmoSupplier.Name = "cmoSupplier";
-            this.cmoSupplier.Size = new System.Drawing.Size(138, 20);
-            this.cmoSupplier.TabIndex = 28;
-            this.cmoSupplier.SelectedIndexChanged += new System.EventHandler(this.cmoSupplier_SelectedIndexChanged);
-            // 
             // addContract
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 505);
-            this.Controls.Add(this.txtQty);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAdd);
@@ -320,8 +298,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtQty;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmoSupplier;
     }
 }

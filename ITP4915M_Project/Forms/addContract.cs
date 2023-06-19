@@ -8,7 +8,7 @@ namespace ITP4915M_Project.Forms
 {
     public partial class addContract : Form
     {
-        private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
+        private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb;Persist Security Info=False;";
         private List<string> itemNames = new List<string>();
         private List<string> addedItems = new List<string>();
         private List<string> supplierNames = new List<string>(); // Declare this at the top of the class
@@ -111,6 +111,11 @@ namespace ITP4915M_Project.Forms
                     // Add the item with the quantity to the list
                     addedItems.Add(selectedItem + " - Quantity: " + quantityNum);
                     itemNames.Remove(selectedItem);
+
+                    // Calculate the total price for the selected item and quantity
+                    decimal totalPrice = GetTotalPriceForItem(selectedItem, quantityNum);
+                    txtPrice.Text = "Total Price: " + totalPrice.ToString("0.00");
+
                     UpdateListBoxes();
                 }
                 else
@@ -119,6 +124,43 @@ namespace ITP4915M_Project.Forms
                 }
             }
         }
+
+
+        private decimal GetTotalPriceForItem(string itemName, int quantity)
+        {
+            decimal price = 0;
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Fetch price for the selected item from the "item" table
+                    string priceQuery = $"SELECT price FROM item WHERE item_name = '{itemName}'";
+                    OleDbCommand priceCommand = new OleDbCommand(priceQuery, connection);
+
+                    OleDbDataReader priceReader = priceCommand.ExecuteReader();
+
+                    if (priceReader.Read())
+                    {
+                        price = priceReader.GetDecimal(0); // Assuming price is the first column and of type decimal
+                    }
+
+                    priceReader.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while fetching price: " + ex.Message + "\n" + ex.StackTrace);
+            }
+
+            return price * quantity; // Calculate total price
+        }
+
+
+
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
@@ -171,6 +213,11 @@ namespace ITP4915M_Project.Forms
         }
 
         private void cmoSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
         {
 
         }

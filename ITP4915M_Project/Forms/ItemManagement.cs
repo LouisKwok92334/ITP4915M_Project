@@ -102,11 +102,12 @@ namespace ITP4915M_Project.Forms
             }
         }
 
-        private Item GetItemById(int itemId)
+        private ITP4915M_Project.Models.Item GetItemById(int itemId)
         {
             using (OleDbConnection conn = new OleDbConnection(ConnectionString))
             {
                 string query = $"SELECT item_id, item_name, supplier_name, stock FROM item INNER JOIN supplier ON item.supplier_id = supplier.supplier_id WHERE item_id = {itemId}";
+
 
                 using (OleDbCommand cmd = new OleDbCommand(query, conn))
                 {
@@ -116,7 +117,7 @@ namespace ITP4915M_Project.Forms
                         OleDbDataReader reader = cmd.ExecuteReader();
                         if (reader.Read())
                         {
-                            Item item = new Item();
+                            ITP4915M_Project.Models.Item item = new ITP4915M_Project.Models.Item(); // Note the full namespace here
                             item.Id = Convert.ToInt32(reader["item_id"]);
                             item.Name = Convert.ToString(reader["item_name"]);
                             item.Supplier = Convert.ToString(reader["supplier_name"]);
@@ -134,6 +135,7 @@ namespace ITP4915M_Project.Forms
 
             return null; // Item not found
         }
+
 
 
     }

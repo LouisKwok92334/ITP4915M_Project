@@ -104,5 +104,3 @@ C:\Users\Yip\Desktop\4915_Project\ITP4915M_PS\ITP4915M_Project\ITP4915M_Project\
 C:\Users\Yip\Desktop\4915_Project\ITP4915M_PS\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.pdb
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\bin\Debug\MetroSet UI.dll
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.csproj.CopyComplete
-
-
