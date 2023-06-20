@@ -30,31 +30,29 @@ namespace ITP4915M_Project.Forms
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtVirualID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtStock = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtSupplierName = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtsearchItem = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cboCategory = new System.Windows.Forms.ComboBox();
-            this.cboSupplier = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnBPA = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtVirualID = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -71,19 +69,58 @@ namespace ITP4915M_Project.Forms
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.txtSupplierName);
-            this.groupBox1.Location = new System.Drawing.Point(46, 259);
+            this.groupBox1.Location = new System.Drawing.Point(65, 78);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(365, 183);
+            this.groupBox1.Size = new System.Drawing.Size(359, 161);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Info";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(191, 127);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(32, 12);
+            this.label9.TabIndex = 42;
+            this.label9.Text = "Status";
+            // 
+            // txtStatus
+            // 
+            this.txtStatus.Location = new System.Drawing.Point(235, 124);
+            this.txtStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.ReadOnly = true;
+            this.txtStatus.Size = new System.Drawing.Size(102, 22);
+            this.txtStatus.TabIndex = 41;
+            // 
+            // label8
+            // 
+            this.label8.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(11, 34);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 12);
+            this.label8.TabIndex = 40;
+            this.label8.Text = "virtual id";
+            // 
+            // txtVirualID
+            // 
+            this.txtVirualID.Location = new System.Drawing.Point(74, 31);
+            this.txtVirualID.Margin = new System.Windows.Forms.Padding(2);
+            this.txtVirualID.Name = "txtVirualID";
+            this.txtVirualID.ReadOnly = true;
+            this.txtVirualID.Size = new System.Drawing.Size(102, 22);
+            this.txtVirualID.TabIndex = 39;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(191, 96);
+            this.label7.Location = new System.Drawing.Point(192, 86);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 12);
@@ -93,7 +130,7 @@ namespace ITP4915M_Project.Forms
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(202, 44);
+            this.label6.Location = new System.Drawing.Point(203, 34);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(17, 12);
@@ -103,7 +140,7 @@ namespace ITP4915M_Project.Forms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 89);
+            this.label5.Location = new System.Drawing.Point(14, 79);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 12);
@@ -113,7 +150,7 @@ namespace ITP4915M_Project.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 134);
+            this.label4.Location = new System.Drawing.Point(14, 127);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 12);
@@ -122,49 +159,49 @@ namespace ITP4915M_Project.Forms
             // 
             // txtStock
             // 
-            this.txtStock.Location = new System.Drawing.Point(234, 93);
+            this.txtStock.Location = new System.Drawing.Point(235, 79);
             this.txtStock.Margin = new System.Windows.Forms.Padding(2);
             this.txtStock.Name = "txtStock";
             this.txtStock.ReadOnly = true;
             this.txtStock.Size = new System.Drawing.Size(102, 22);
             this.txtStock.TabIndex = 5;
-            this.txtStock.TextChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(234, 41);
-            this.txtId.Margin = new System.Windows.Forms.Padding(2);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(102, 22);
-            this.txtId.TabIndex = 3;
-            this.txtId.TextChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // txtSupplierName
-            // 
-            this.txtSupplierName.Location = new System.Drawing.Point(73, 131);
-            this.txtSupplierName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.ReadOnly = true;
-            this.txtSupplierName.Size = new System.Drawing.Size(102, 22);
-            this.txtSupplierName.TabIndex = 1;
-            this.txtSupplierName.TextChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+      
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(73, 86);
+            this.txtName.Location = new System.Drawing.Point(74, 76);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(102, 22);
             this.txtName.TabIndex = 0;
-            this.txtName.TextChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(235, 31);
+            this.txtId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(102, 22);
+            this.txtId.TabIndex = 3;
+
+            // 
+            // txtSupplierName
+            // 
+            this.txtSupplierName.Location = new System.Drawing.Point(74, 121);
+            this.txtSupplierName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSupplierName.Name = "txtSupplierName";
+            this.txtSupplierName.ReadOnly = true;
+            this.txtSupplierName.Size = new System.Drawing.Size(102, 22);
+            this.txtSupplierName.TabIndex = 1;
+
             // 
             // btnEdit
             // 
             this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnEdit.AllowDrop = true;
-            this.btnEdit.Location = new System.Drawing.Point(749, 468);
+            this.btnEdit.Location = new System.Drawing.Point(347, 254);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(77, 26);
@@ -176,19 +213,19 @@ namespace ITP4915M_Project.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 63);
+            this.label1.Location = new System.Drawing.Point(63, 43);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 12);
+            this.label1.Size = new System.Drawing.Size(26, 12);
             this.label1.TabIndex = 30;
-            this.label1.Text = "Search";
+            this.label1.Text = "Item";
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(140, 214);
+            this.btnSearch.Location = new System.Drawing.Point(347, 36);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(208, 23);
+            this.btnSearch.Size = new System.Drawing.Size(77, 26);
             this.btnSearch.TabIndex = 29;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -196,78 +233,41 @@ namespace ITP4915M_Project.Forms
             // 
             // txtsearchItem
             // 
-            this.txtsearchItem.Location = new System.Drawing.Point(140, 60);
+            this.txtsearchItem.Location = new System.Drawing.Point(111, 36);
             this.txtsearchItem.Margin = new System.Windows.Forms.Padding(2);
             this.txtsearchItem.Name = "txtsearchItem";
-            this.txtsearchItem.Size = new System.Drawing.Size(208, 22);
+            this.txtsearchItem.Size = new System.Drawing.Size(220, 22);
             this.txtsearchItem.TabIndex = 28;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 119);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 12);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "Category";
-            // 
-            // cboCategory
-            // 
-            this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(140, 119);
-            this.cboCategory.Margin = new System.Windows.Forms.Padding(2);
-            this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(208, 20);
-            this.cboCategory.TabIndex = 33;
-            // 
-            // cboSupplier
-            // 
-            this.cboSupplier.FormattingEnabled = true;
-            this.cboSupplier.Location = new System.Drawing.Point(140, 168);
-            this.cboSupplier.Margin = new System.Windows.Forms.Padding(2);
-            this.cboSupplier.Name = "cboSupplier";
-            this.cboSupplier.Size = new System.Drawing.Size(208, 20);
-            this.cboSupplier.TabIndex = 35;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(44, 175);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 12);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "Supplier";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(442, 37);
+            this.dataGridView1.Location = new System.Drawing.Point(65, 299);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.Height = 38;
-            this.dataGridView1.Size = new System.Drawing.Size(384, 414);
+            this.dataGridView1.Size = new System.Drawing.Size(727, 155);
             this.dataGridView1.TabIndex = 36;
             // 
             // btnBPA
             // 
             this.btnBPA.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnBPA.AllowDrop = true;
-            this.btnBPA.Location = new System.Drawing.Point(442, 468);
+            this.btnBPA.Location = new System.Drawing.Point(259, 254);
             this.btnBPA.Margin = new System.Windows.Forms.Padding(2);
             this.btnBPA.Name = "btnBPA";
-            this.btnBPA.Size = new System.Drawing.Size(87, 23);
+            this.btnBPA.Size = new System.Drawing.Size(77, 26);
             this.btnBPA.TabIndex = 37;
             this.btnBPA.Text = "BPA";
             this.btnBPA.UseVisualStyleBackColor = true;
+            this.btnBPA.Click += new System.EventHandler(this.btnBPA_Click);
             // 
             // btnAddItem
             // 
             this.btnAddItem.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnAddItem.AllowDrop = true;
-            this.btnAddItem.Location = new System.Drawing.Point(656, 468);
+            this.btnAddItem.Location = new System.Drawing.Point(715, 468);
             this.btnAddItem.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(77, 26);
@@ -276,57 +276,23 @@ namespace ITP4915M_Project.Forms
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
-            // label8
+            // pictureBox1
             // 
-            this.label8.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 44);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(47, 12);
-            this.label8.TabIndex = 40;
-            this.label8.Text = "virtual id";
-            // 
-            // txtVirualID
-            // 
-            this.txtVirualID.Location = new System.Drawing.Point(73, 41);
-            this.txtVirualID.Margin = new System.Windows.Forms.Padding(2);
-            this.txtVirualID.Name = "txtVirualID";
-            this.txtVirualID.ReadOnly = true;
-            this.txtVirualID.Size = new System.Drawing.Size(102, 22);
-            this.txtVirualID.TabIndex = 39;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(190, 137);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 12);
-            this.label9.TabIndex = 42;
-            this.label9.Text = "Status";
-            // 
-            // txtStatus
-            // 
-            this.txtStatus.Location = new System.Drawing.Point(234, 134);
-            this.txtStatus.Margin = new System.Windows.Forms.Padding(2);
-            this.txtStatus.Name = "txtStatus";
-            this.txtStatus.ReadOnly = true;
-            this.txtStatus.Size = new System.Drawing.Size(102, 22);
-            this.txtStatus.TabIndex = 41;
+            this.pictureBox1.Location = new System.Drawing.Point(462, 32);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(330, 253);
+            this.pictureBox1.TabIndex = 39;
+            this.pictureBox1.TabStop = false;
             // 
             // ItemManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 505);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.btnBPA);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.cboSupplier);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cboCategory);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtsearchItem);
@@ -338,6 +304,7 @@ namespace ITP4915M_Project.Forms
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,10 +323,6 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtsearchItem;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cboCategory;
-        private System.Windows.Forms.ComboBox cboSupplier;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnBPA;
@@ -368,5 +331,6 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtVirualID;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -10,20 +10,19 @@ namespace ITP4915M_Project.Forms
     public partial class ItemManagement : Form
     {
         private const string ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
-
+        private bool isEditMode = false;
+        private string selectedItemId = "";
         public ItemManagement()
         {
             InitializeComponent();
-            FillComboBoxes();
-            cboCategory.SelectedValue = false;
-            cboSupplier.SelectedValue = false;
+
+      
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string searchItem = txtsearchItem.Text;
-            int? categoryId = cboCategory.SelectedValue as int?;
-            int? supplierId = cboSupplier.SelectedValue as int?;
+
 
             string query = "SELECT i.item_id AS Id, i.item_name AS Name, i.virtual_id AS VirtualId, i.stock, i.status, s.supplier_name AS SupplierName " +
      "FROM item i " +
@@ -33,11 +32,7 @@ namespace ITP4915M_Project.Forms
             if (!string.IsNullOrWhiteSpace(searchItem))
                 query += "AND i.item_name LIKE @SearchItem ";
 
-            if (categoryId != null)
-                query += "AND i.category_id = @CategoryId ";
-
-            if (supplierId != null)
-                query += "AND i.supplier_id = @SupplierId ";
+        
 
             try
             {
@@ -48,12 +43,6 @@ namespace ITP4915M_Project.Forms
                     {
                         if (!string.IsNullOrWhiteSpace(searchItem))
                             command.Parameters.AddWithValue("@SearchItem", "%" + searchItem + "%");
-
-                        if (categoryId != null)
-                            command.Parameters.AddWithValue("@CategoryId", categoryId.Value);
-
-                        if (supplierId != null)
-                            command.Parameters.AddWithValue("@SupplierId", supplierId.Value);
 
                         using (OleDbDataReader reader = command.ExecuteReader())
                         {
@@ -74,120 +63,190 @@ namespace ITP4915M_Project.Forms
             {
                 MessageBox.Show("An error occurred while searching: " + ex.Message);
             }
-        }
-
-        private DataTable GetData(string queryString)
-        {
-            DataTable dt = new DataTable();
-
-            using (OleDbConnection conn = new OleDbConnection(ConnectionString))
+            string query2 = "SELECT ri.created_at AS CreatedAt, ri.quantity AS Quantity, ri.total_price AS TotalPrice, ri.updated_at AS updatedAt " +
+    "FROM request_items ri " +
+    "WHERE 1 = 1 ";
+            try
             {
-                using (OleDbCommand cmd = new OleDbCommand(queryString, conn))
+                using (OleDbConnection connection = new OleDbConnection(ConnectionString))
+                using (OleDbCommand command = new OleDbCommand(query2, connection))
                 {
-                    try
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
                     {
-                        conn.Open();
-
-                        OleDbDataAdapter da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
                     }
                 }
+
+                dataGridView1.Refresh();
             }
-
-            return dt;
-        }
-
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedCells.Count > 0)
+            catch (Exception ex)
             {
-                int selectedRowIndex = dataGridView1.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dataGridView1.Rows[selectedRowIndex];
-
-                txtName.Text = Convert.ToString(selectedRow.Cells["item_name"].Value);
-                txtSupplierName.Text = Convert.ToString(selectedRow.Cells["supplier_name"].Value);
-                txtId.Text = Convert.ToString(selectedRow.Cells["item_id"].Value);
-                txtStock.Text = Convert.ToString(selectedRow.Cells["stock"].Value);
+                MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
 
-        private void FillComboBoxes()
-        {
-            string categoryQuery = "SELECT category_id, category_name FROM category";
-            DataTable dtCategory = GetData(categoryQuery);
-            cboCategory.DataSource = dtCategory;
-            cboCategory.ValueMember = "category_id";
-            cboCategory.DisplayMember = "category_name";
+        //private DataTable GetData(string queryString)
+        //{
+        //    DataTable dt = new DataTable();
 
-            string supplierQuery = "SELECT supplier_id, supplier_name FROM supplier";
-            DataTable dtSupplier = GetData(supplierQuery);
-            cboSupplier.DataSource = dtSupplier;
-            cboSupplier.ValueMember = "supplier_id";
-            cboSupplier.DisplayMember = "supplier_name";
-        }
+        //    using (OleDbConnection conn = new OleDbConnection(ConnectionString))
+        //    {
+        //        using (OleDbCommand cmd = new OleDbCommand(queryString, conn))
+        //        {
+        //            try
+        //            {
+        //                conn.Open();
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.CurrentRow != null)
-            {
-                int itemId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["item_id"].Value);
+        //                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+        //                da.Fill(dt);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                MessageBox.Show(ex.Message);
+        //            }
+        //        }
+        //    }
 
-                // Retrieve the item details from the database
-                ITP4915M_Project.Models.Item selectedItem = GetItemById(itemId);
+        //    return dt;
+        //}
 
-                if (selectedItem != null)
-                {
-                    var editForm = new Edit(selectedItem);
-                    editForm.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Item not found.");
-                }
-            }
-        }
+        //private void btnEdit_Click(object sender, EventArgs e)
+        //{
+        //    if (dataGridView1.CurrentRow != null)
+        //    {
+        //        int itemId = Convert.ToInt32(dataGridView1.CurrentRow.Cells["item_id"].Value);
 
-        private ITP4915M_Project.Models.Item GetItemById(int itemId)
-        {
-            using (OleDbConnection conn = new OleDbConnection(ConnectionString))
-            {
-                string query = $"SELECT item_id, item_name, supplier_name, stock FROM item INNER JOIN supplier ON item.supplier_id = supplier.supplier_id WHERE item_id = {itemId}";
+        //        // Retrieve the item details from the database
+        //        ITP4915M_Project.Models.Item selectedItem = GetItemById(itemId);
+
+        //        if (selectedItem != null)
+        //        {
+        //            var editForm = new Edit(selectedItem);
+        //            editForm.Show();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Item not found.");
+        //        }
+        //    }
+        //}
+
+        //private ITP4915M_Project.Models.Item GetItemById(int itemId)
+        //{
+        //    using (OleDbConnection conn = new OleDbConnection(ConnectionString))
+        //    {
+        //        string query = $"SELECT item_id, item_name, supplier_name, stock FROM item INNER JOIN supplier ON item.supplier_id = supplier.supplier_id WHERE item_id = {itemId}";
 
 
-                using (OleDbCommand cmd = new OleDbCommand(query, conn))
-                {
-                    try
-                    {
-                        conn.Open();
-                        OleDbDataReader reader = cmd.ExecuteReader();
-                        if (reader.Read())
-                        {
-                            ITP4915M_Project.Models.Item item = new ITP4915M_Project.Models.Item(); // Note the full namespace here
-                            item.Id = Convert.ToInt32(reader["item_id"]);
-                            item.Name = Convert.ToString(reader["item_name"]);
-                            item.Supplier = Convert.ToString(reader["supplier_name"]);
-                            item.Stack = Convert.ToInt32(reader["stock"]);
-                            // Set other properties as needed
-                            return item;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
-            }
+        //        using (OleDbCommand cmd = new OleDbCommand(query, conn))
+        //        {
+        //            try
+        //            {
+        //                conn.Open();
+        //                OleDbDataReader reader = cmd.ExecuteReader();
+        //                if (reader.Read())
+        //                {
+        //                    ITP4915M_Project.Models.Item item = new ITP4915M_Project.Models.Item(); // Note the full namespace here
+        //                    item.Id = Convert.ToInt32(reader["item_id"]);
+        //                    item.Name = Convert.ToString(reader["item_name"]);
+        //                    item.Supplier = Convert.ToString(reader["supplier_name"]);
+        //                    item.Stack = Convert.ToInt32(reader["stock"]);
+        //                    // Set other properties as needed
+        //                    return item;
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                MessageBox.Show(ex.Message);
+        //            }
+        //        }
+        //    }
 
-            return null; // Item not found
-        }
+        //    return null; // Item not found
+        //}
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBPA_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
+            string query = "SELECT b.bpa_id, s.supplier_name AS SupplierName, b.quantity AS Quantity, b.total_price AS TotalPrice, b.effectived_date, b.end_date, b.status " +
+                    "FROM bpa b " +
+                    "INNER JOIN supplier s ON b.supplier_id = s.supplier_id";
+
+
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                using (OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dataGridView1.DataSource = dataTable;
+                    }
+                }
+
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (!isEditMode) // If not in edit mode, enable editing
+            {
+                txtStock.ReadOnly = false;
+                txtStatus.ReadOnly = false;
+                btnEdit.Text = "OK";
+                isEditMode = true;
+            }
+            else // If in edit mode, save changes and disable editing
+            {
+                // Update the database with the new values from txtStock and txtStatus
+                UpdateDatabase(txtStock.Text, txtStatus.Text);
+
+                txtStock.ReadOnly = true;
+                txtStatus.ReadOnly = true;
+                btnEdit.Text = "Edit";
+                isEditMode = false;
+            }
+        }
+        private void UpdateDatabase(string newStock, string newStatus)
+        {
+            selectedItemId = txtId.Text;
+            string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
+            string itemId = selectedItemId; // Replace with the appropriate item ID
+
+            string query = "UPDATE item SET stock = @stock, status = @status WHERE item_id = @itemId";
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                using (OleDbCommand command = new OleDbCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@stock", newStock);
+                    command.Parameters.AddWithValue("@status", newStatus);
+                    command.Parameters.AddWithValue("@itemId", itemId);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
     }
 }
