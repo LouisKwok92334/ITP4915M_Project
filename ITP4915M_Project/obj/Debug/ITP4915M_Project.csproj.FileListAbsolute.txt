@@ -116,3 +116,4 @@ C:\Users\user\Desktop\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Proje
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.BPA.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.CreateBPA.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.AgreementDetail.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ItemAdd.resources

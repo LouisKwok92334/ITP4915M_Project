@@ -165,7 +165,6 @@ namespace ITP4915M_Project.Forms
             this.txtStock.ReadOnly = true;
             this.txtStock.Size = new System.Drawing.Size(102, 22);
             this.txtStock.TabIndex = 5;
-      
             // 
             // txtName
             // 
@@ -175,7 +174,6 @@ namespace ITP4915M_Project.Forms
             this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(102, 22);
             this.txtName.TabIndex = 0;
-
             // 
             // txtId
             // 
@@ -185,7 +183,6 @@ namespace ITP4915M_Project.Forms
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(102, 22);
             this.txtId.TabIndex = 3;
-
             // 
             // txtSupplierName
             // 
@@ -195,7 +192,6 @@ namespace ITP4915M_Project.Forms
             this.txtSupplierName.ReadOnly = true;
             this.txtSupplierName.Size = new System.Drawing.Size(102, 22);
             this.txtSupplierName.TabIndex = 1;
-
             // 
             // btnEdit
             // 
