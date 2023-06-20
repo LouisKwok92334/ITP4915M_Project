@@ -47,12 +47,16 @@ namespace ITP4915M_Project.Forms
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtStatus);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtCost);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtQty);
@@ -134,11 +138,11 @@ namespace ITP4915M_Project.Forms
             // 
             // txtDeliveryAddress
             // 
-            this.txtDeliveryAddress.Location = new System.Drawing.Point(114, 192);
+            this.txtDeliveryAddress.Location = new System.Drawing.Point(83, 192);
             this.txtDeliveryAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeliveryAddress.Name = "txtDeliveryAddress";
             this.txtDeliveryAddress.ReadOnly = true;
-            this.txtDeliveryAddress.Size = new System.Drawing.Size(200, 22);
+            this.txtDeliveryAddress.Size = new System.Drawing.Size(128, 22);
             this.txtDeliveryAddress.TabIndex = 43;
             this.txtDeliveryAddress.TabStop = false;
             // 
@@ -148,9 +152,9 @@ namespace ITP4915M_Project.Forms
             this.label9.Location = new System.Drawing.Point(21, 195);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 12);
+            this.label9.Size = new System.Drawing.Size(45, 12);
             this.label9.TabIndex = 42;
-            this.label9.Text = "Delivery Location";
+            this.label9.Text = "Delivery";
             // 
             // label8
             // 
@@ -244,6 +248,26 @@ namespace ITP4915M_Project.Forms
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // txtStatus
+            // 
+            this.txtStatus.Location = new System.Drawing.Point(280, 195);
+            this.txtStatus.Margin = new System.Windows.Forms.Padding(2);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.ReadOnly = true;
+            this.txtStatus.Size = new System.Drawing.Size(128, 22);
+            this.txtStatus.TabIndex = 51;
+            this.txtStatus.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(231, 202);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 12);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "Status";
+            // 
             // AgreementDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -284,5 +308,7 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.TextBox txtQty;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.TextBox txtStatus;
+        private System.Windows.Forms.Label label3;
     }
 }

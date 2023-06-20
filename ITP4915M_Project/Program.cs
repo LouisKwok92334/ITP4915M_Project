@@ -17,7 +17,7 @@ namespace ITP4915M_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ItemManagement());
+            Application.Run(new ContractManagement());
         }
     }
 }

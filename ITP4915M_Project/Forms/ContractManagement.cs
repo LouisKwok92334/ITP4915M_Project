@@ -25,6 +25,7 @@ namespace ITP4915M_Project.Forms
             cboSupplier.DisplayMember = "Key";
             cboSupplier.ValueMember = "Value";
             cboSupplier.SelectedIndex = -1; // 不选择任何项
+            cboStatus.Items.AddRange(new string[] { "Created", "Sent", "Accepted", "Rejected", "Canceled" });
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -53,17 +54,49 @@ namespace ITP4915M_Project.Forms
             string contractType = "";
             string status = "";
 
-        
+
+
+            if (!string.IsNullOrEmpty(cboStatus.Text)) // Check if an item is selected in the ComboBox
+            {
+                switch (cboStatus.Text)
+                {
+                    case "Created":
+                        status = "Created";
+                        break;
+                    case "Sent":
+                        status = "Sent";
+                        break;
+                    case "Accepted":
+                        status = "Accepted";
+                        break;
+                    case "Rejected":
+                        status = "Rejected";
+                        break;
+                    case "Canceled":
+                        status = "Canceled";
+                        break;
+                    default:
+
+                        status = "";
+                        break;
+                }
+            }
+            else
+            {
+
+                status = "";
+            }
+           
+
+            // Check which contract type RadioButton is checked
             if (rdoPlanned.Checked)
+            {
                 contractType = "Planned";
+            }
             else if (rdoContract.Checked)
+            {
                 contractType = "Standard";
-
-            if (cxActive.Checked && !cbInactive.Checked)
-                status = "Active";
-            else if (!cxActive.Checked && cbInactive.Checked)
-                status = "Inactive";
-
+            }
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
 
             string query = "SELECT a.agreement_id AS AgreementId, s.supplier_name, a.agreement_type, a.status " +
@@ -177,12 +210,13 @@ namespace ITP4915M_Project.Forms
         private void btnReset_Click(object sender, EventArgs e)
         {
             LoadData();
+            dataGridView1.Refresh();
 
             txtSearch.Text = "";
             rdoPlanned.Checked = false;
             rdoContract.Checked = false;
-            cxActive.Checked = false;
-            cbInactive.Checked = false;
+            cboSupplier.Text = "";
+            cboStatus.Text = "";
             cboSupplier.Text = "";
 
         }

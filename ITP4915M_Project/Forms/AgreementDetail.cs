@@ -24,7 +24,7 @@ namespace ITP4915M_Project.Forms
 
         private void LoadData()
         {
-            string query = "SELECT a.agreement_id, s.supplier_name, a.effectived_at, a.end_at, r.restaurant_name, r.restaurant_id " +
+            string query = "SELECT a.agreement_id, s.supplier_name, a.effectived_at, a.end_at, r.restaurant_name, r.restaurant_id, a.status " +
                 "FROM (((agreement AS a " +
                 "INNER JOIN supplier AS s ON a.supplier_id = s.supplier_id) " +
                 "INNER JOIN purchase_order AS p ON a.agreement_id = p.agreement_id) " +
@@ -50,6 +50,7 @@ namespace ITP4915M_Project.Forms
                                 txtDeliveryAddress.Text = string.IsNullOrEmpty(restaurantName) ? "Warehouse" : restaurantName;
                                 txtStart.Text = reader["effectived_at"].ToString();
                                 txtEnd.Text = reader["end_at"].ToString();
+                                txtStatus.Text = reader["status"].ToString();
 
                                 string itemQuery = "SELECT i.item_name, i.item_id " +
                                                    "FROM item AS i, agreement AS a, request_items AS r " +
@@ -110,6 +111,21 @@ namespace ITP4915M_Project.Forms
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
+        {
+            DialogResult editChoice = MessageBox.Show("Do you want to edit the delivery location? Click 'No' to edit the status.",
+                                                      "Edit choice", MessageBoxButtons.YesNoCancel);
+
+            if (editChoice == DialogResult.Yes)
+            {
+                ShowEditDeliveryLocationPrompt();
+            }
+            else if (editChoice == DialogResult.No)
+            {
+                ShowEditStatusPrompt();
+            }
+        }
+
+        private void ShowEditDeliveryLocationPrompt()
         {
             Form prompt = new Form()
             {
@@ -172,6 +188,7 @@ namespace ITP4915M_Project.Forms
 
             return restaurantNames;
         }
+
         private void UpdateName(int? newRestaurantId)
         {
             string query = "UPDATE purchase_order SET restaurant_id = @NewRestaurantId " +
@@ -184,7 +201,7 @@ namespace ITP4915M_Project.Forms
                     connection.Open();
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@NewRestaurantId", newRestaurantId.HasValue ? (object)newRestaurantId.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("@NewRestaurantId", newRestaurantId.HasValue ? (object)newRestaurantId.Value : DBNull.Value);
                         command.Parameters.AddWithValue("@AgreementId", agreementId);
 
                         command.ExecuteNonQuery();
@@ -197,6 +214,62 @@ namespace ITP4915M_Project.Forms
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while updating the restaurant ID: " + ex.Message);
+            }
+        }
+
+        private void ShowEditStatusPrompt()
+        {
+            Form prompt = new Form()
+            {
+                Width = 500,
+                Height = 150,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = "Select new status",
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            Label textLabel = new Label() { Left = 50, Top = 20, Text = "New status" };
+            ComboBox comboBox = new ComboBox() { Left = 50, Top = 50, Width = 400 };
+            comboBox.Items.AddRange(new string[] { "Created", "Sent", "Accepted", "Rejected", "Canceled" });
+            Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
+            confirmation.Click += (sender2, e2) => { prompt.Close(); };
+            prompt.Controls.Add(comboBox);
+            prompt.Controls.Add(confirmation);
+            prompt.Controls.Add(textLabel);
+            prompt.AcceptButton = confirmation;
+
+            DialogResult result = prompt.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string newStatus = comboBox.SelectedItem.ToString();
+                UpdateStatus(newStatus);
+            }
+        }
+
+        private void UpdateStatus(string newStatus)
+        {
+            string query = "UPDATE agreement SET status = @NewStatus " +
+                           "WHERE agreement_id = @AgreementId";
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+                    using (OleDbCommand command = new OleDbCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@NewStatus", newStatus);
+                        command.Parameters.AddWithValue("@AgreementId", agreementId);
+
+                        command.ExecuteNonQuery();
+
+                        MessageBox.Show("Status updated successfully!");
+                        LoadData(); // refresh the data
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while updating the status: " + ex.Message);
             }
         }
     }

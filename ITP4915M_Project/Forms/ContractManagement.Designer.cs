@@ -39,11 +39,10 @@ namespace ITP4915M_Project.Forms
             this.label10 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.cxActive = new System.Windows.Forms.CheckBox();
-            this.cbInactive = new System.Windows.Forms.CheckBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnViewBPA = new System.Windows.Forms.Button();
             this.cboSupplier = new System.Windows.Forms.ComboBox();
+            this.cboStatus = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -156,28 +155,6 @@ namespace ITP4915M_Project.Forms
             this.txtSearch.Size = new System.Drawing.Size(183, 22);
             this.txtSearch.TabIndex = 47;
             // 
-            // cxActive
-            // 
-            this.cxActive.AutoSize = true;
-            this.cxActive.Location = new System.Drawing.Point(120, 373);
-            this.cxActive.Margin = new System.Windows.Forms.Padding(2);
-            this.cxActive.Name = "cxActive";
-            this.cxActive.Size = new System.Drawing.Size(54, 16);
-            this.cxActive.TabIndex = 49;
-            this.cxActive.Text = "Active";
-            this.cxActive.UseVisualStyleBackColor = true;
-            // 
-            // cbInactive
-            // 
-            this.cbInactive.AutoSize = true;
-            this.cbInactive.Location = new System.Drawing.Point(198, 373);
-            this.cbInactive.Margin = new System.Windows.Forms.Padding(2);
-            this.cbInactive.Name = "cbInactive";
-            this.cbInactive.Size = new System.Drawing.Size(61, 16);
-            this.cbInactive.TabIndex = 50;
-            this.cbInactive.Text = "Inactive";
-            this.cbInactive.UseVisualStyleBackColor = true;
-            // 
             // btnReset
             // 
             this.btnReset.Location = new System.Drawing.Point(404, 447);
@@ -208,16 +185,23 @@ namespace ITP4915M_Project.Forms
             this.cboSupplier.Size = new System.Drawing.Size(183, 20);
             this.cboSupplier.TabIndex = 53;
             // 
+            // cboStatus
+            // 
+            this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.Location = new System.Drawing.Point(120, 373);
+            this.cboStatus.Name = "cboStatus";
+            this.cboStatus.Size = new System.Drawing.Size(183, 20);
+            this.cboStatus.TabIndex = 54;
+            // 
             // ContractManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 505);
+            this.Controls.Add(this.cboStatus);
             this.Controls.Add(this.cboSupplier);
             this.Controls.Add(this.btnViewBPA);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.cbInactive);
-            this.Controls.Add(this.cxActive);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label10);
@@ -249,10 +233,9 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.CheckBox cxActive;
-        private System.Windows.Forms.CheckBox cbInactive;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnViewBPA;
         private System.Windows.Forms.ComboBox cboSupplier;
+        private System.Windows.Forms.ComboBox cboStatus;
     }
 }
