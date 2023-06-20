@@ -131,7 +131,7 @@ namespace ITP4915M_Project.Forms
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(52, 378);
+            this.label10.Location = new System.Drawing.Point(52, 373);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(32, 12);
@@ -159,7 +159,7 @@ namespace ITP4915M_Project.Forms
             // cxActive
             // 
             this.cxActive.AutoSize = true;
-            this.cxActive.Location = new System.Drawing.Point(120, 378);
+            this.cxActive.Location = new System.Drawing.Point(120, 373);
             this.cxActive.Margin = new System.Windows.Forms.Padding(2);
             this.cxActive.Name = "cxActive";
             this.cxActive.Size = new System.Drawing.Size(54, 16);
@@ -170,7 +170,7 @@ namespace ITP4915M_Project.Forms
             // cbInactive
             // 
             this.cbInactive.AutoSize = true;
-            this.cbInactive.Location = new System.Drawing.Point(198, 378);
+            this.cbInactive.Location = new System.Drawing.Point(198, 373);
             this.cbInactive.Margin = new System.Windows.Forms.Padding(2);
             this.cbInactive.Name = "cbInactive";
             this.cbInactive.Size = new System.Drawing.Size(61, 16);

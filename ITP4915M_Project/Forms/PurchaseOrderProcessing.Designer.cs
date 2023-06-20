@@ -53,7 +53,7 @@ namespace ITP4915M_Project.Forms
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(738, 432);
+            this.btnSubmit.Location = new System.Drawing.Point(730, 448);
             this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(82, 30);

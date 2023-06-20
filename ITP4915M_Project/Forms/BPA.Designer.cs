@@ -47,10 +47,10 @@ namespace ITP4915M_Project.Forms
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 232);
+            this.dataGridView1.Location = new System.Drawing.Point(34, 232);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(492, 221);
+            this.dataGridView1.Size = new System.Drawing.Size(470, 221);
             this.dataGridView1.TabIndex = 0;
             // 
             // txtBpaid
@@ -96,7 +96,7 @@ namespace ITP4915M_Project.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 160);
+            this.label3.Location = new System.Drawing.Point(39, 157);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 12);
             this.label3.TabIndex = 6;

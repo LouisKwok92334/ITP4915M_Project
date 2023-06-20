@@ -134,7 +134,7 @@ namespace ITP4915M_Project.Forms
             // 
             // txtDeliveryAddress
             // 
-            this.txtDeliveryAddress.Location = new System.Drawing.Point(115, 193);
+            this.txtDeliveryAddress.Location = new System.Drawing.Point(114, 192);
             this.txtDeliveryAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeliveryAddress.Name = "txtDeliveryAddress";
             this.txtDeliveryAddress.ReadOnly = true;

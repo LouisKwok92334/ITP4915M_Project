@@ -15,16 +15,65 @@ namespace ITP4915M_Project.Forms
         {
             InitializeComponent();
             FillComboBoxes();
+            cboCategory.SelectedValue = false;
+            cboSupplier.SelectedValue = false;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string categoryCondition = cboCategory.SelectedValue != null ? $"AND category_id = {cboCategory.SelectedValue}" : "";
-            string supplierCondition = cboSupplier.SelectedValue != null ? $"AND item.supplier_id = {cboSupplier.SelectedValue}" : "";
-            string queryString = $"SELECT item.*, supplier.supplier_name FROM item INNER JOIN supplier ON item.supplier_id = supplier.supplier_id WHERE item_name LIKE '%{txtsearchItem.Text}%' {categoryCondition} {supplierCondition}";
+            string searchItem = txtsearchItem.Text;
+            int? categoryId = cboCategory.SelectedValue as int?;
+            int? supplierId = cboSupplier.SelectedValue as int?;
 
-            DataTable dt = GetData(queryString);
-            dataGridView1.DataSource = dt;
+            string query = "SELECT i.item_id AS Id, i.item_name AS Name, i.virtual_id AS VirtualId, i.stock, i.status, s.supplier_name AS SupplierName " +
+     "FROM item i " +
+     "INNER JOIN supplier s ON i.supplier_id = s.supplier_id " +
+     "WHERE 1 = 1 ";
+
+            if (!string.IsNullOrWhiteSpace(searchItem))
+                query += "AND i.item_name LIKE @SearchItem ";
+
+            if (categoryId != null)
+                query += "AND i.category_id = @CategoryId ";
+
+            if (supplierId != null)
+                query += "AND i.supplier_id = @SupplierId ";
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(ConnectionString))
+                {
+                    connection.Open();
+                    using (OleDbCommand command = new OleDbCommand(query, connection))
+                    {
+                        if (!string.IsNullOrWhiteSpace(searchItem))
+                            command.Parameters.AddWithValue("@SearchItem", "%" + searchItem + "%");
+
+                        if (categoryId != null)
+                            command.Parameters.AddWithValue("@CategoryId", categoryId.Value);
+
+                        if (supplierId != null)
+                            command.Parameters.AddWithValue("@SupplierId", supplierId.Value);
+
+                        using (OleDbDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                txtVirualID.Text = reader["VirtualId"].ToString();
+                                txtId.Text = reader["Id"].ToString();
+                                txtName.Text = reader["Name"].ToString();
+                                txtStock.Text = reader["stock"].ToString();
+                                txtStatus.Text = reader["status"].ToString();
+                                txtSupplierName.Text = reader["SupplierName"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while searching: " + ex.Message);
+            }
         }
 
         private DataTable GetData(string queryString)
@@ -60,7 +109,7 @@ namespace ITP4915M_Project.Forms
                 DataGridViewRow selectedRow = dataGridView1.Rows[selectedRowIndex];
 
                 txtName.Text = Convert.ToString(selectedRow.Cells["item_name"].Value);
-                txtSupplier.Text = Convert.ToString(selectedRow.Cells["supplier_name"].Value);
+                txtSupplierName.Text = Convert.ToString(selectedRow.Cells["supplier_name"].Value);
                 txtId.Text = Convert.ToString(selectedRow.Cells["item_id"].Value);
                 txtStock.Text = Convert.ToString(selectedRow.Cells["stock"].Value);
             }
@@ -136,7 +185,9 @@ namespace ITP4915M_Project.Forms
             return null; // Item not found
         }
 
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }
