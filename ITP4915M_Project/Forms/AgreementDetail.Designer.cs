@@ -68,9 +68,9 @@ namespace ITP4915M_Project.Forms
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtSupplier);
             this.groupBox2.Location = new System.Drawing.Point(28, 263);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(433, 233);
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
@@ -138,7 +138,7 @@ namespace ITP4915M_Project.Forms
             this.txtDeliveryAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtDeliveryAddress.Name = "txtDeliveryAddress";
             this.txtDeliveryAddress.ReadOnly = true;
-            this.txtDeliveryAddress.Size = new System.Drawing.Size(227, 22);
+            this.txtDeliveryAddress.Size = new System.Drawing.Size(200, 22);
             this.txtDeliveryAddress.TabIndex = 43;
             this.txtDeliveryAddress.TabStop = false;
             // 
@@ -253,7 +253,7 @@ namespace ITP4915M_Project.Forms
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AgreementDetail";
             this.Text = "ContractDetail";
             this.Load += new System.EventHandler(this.ContractDetail_Load);

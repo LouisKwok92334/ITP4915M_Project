@@ -66,8 +66,6 @@ C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Pr
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.MasterDataMaintenance.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.SystemSecurityControl.resources
 C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.EditUser.resources
-C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.addContract.resources
-C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.ContractDetail.resources
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\bin\Debug\ITP4915M_Project.exe.config
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\bin\Debug\ITP4915M_Project.exe
 \\Mac\Home\Documents\GitHub\ITP4915M_Project\ITP4915M_Project\bin\Debug\ITP4915M_Project.pdb
@@ -115,3 +113,6 @@ C:\Users\user\Desktop\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Proje
 C:\Users\user\Desktop\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.CreateBPA.resources
 C:\Users\user\Desktop\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.AgreementDetail.resources
 C:\Users\user\Desktop\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.BPA.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.BPA.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.CreateBPA.resources
+C:\Users\user\AppData\Local\GitHubDesktop\app-3.2.0\ITP4915M_Project\ITP4915M_Project\obj\Debug\ITP4915M_Project.Forms.AgreementDetail.resources
