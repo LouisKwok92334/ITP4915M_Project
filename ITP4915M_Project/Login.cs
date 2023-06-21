@@ -8,7 +8,7 @@ namespace ITP4915M_Project
     public partial class Login : Form
     {
         private const string ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
-        private string password = "";
+ 
 
         public Login()
         {
@@ -18,7 +18,7 @@ namespace ITP4915M_Project
         private void btnlogin_Click(object sender, EventArgs e)
         {
             string username = txtUserName.Text.Trim();
-            string password = this.password;
+            string password = txtPassword.Text.Trim();
 
             if (ValidateCredentials(username, password))
             {
@@ -50,7 +50,7 @@ namespace ITP4915M_Project
                 {
                     connection.Open();
 
-                    string query = "SELECT COUNT(*) FROM Staff WHERE userName = @username AND password = @password";
+                    string query = "SELECT COUNT(*) FROM staff WHERE login_name = ? AND login_password = ?";
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@username", username);
@@ -69,9 +69,9 @@ namespace ITP4915M_Project
             return isValid;
         }
 
-        private string GetStaffID(string username)
+        private int GetStaffID(string username)
         {
-            string staffID = null;
+            int staffID = 0;
 
             try
             {
@@ -79,12 +79,12 @@ namespace ITP4915M_Project
                 {
                     connection.Open();
 
-                    string query = "SELECT staffID FROM Staff WHERE userName = @username";
+                    string query = "SELECT staff_id FROM staff WHERE login_name = ?";
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@username", username);
+                        command.Parameters.AddWithValue("?", username);
 
-                        staffID = (string)command.ExecuteScalar();
+                        staffID = Convert.ToInt32(command.ExecuteScalar());
                     }
                 }
             }
@@ -106,12 +106,12 @@ namespace ITP4915M_Project
                 {
                     connection.Open();
 
-                    string query = "SELECT staffName FROM Staff WHERE userName = @username";
+                    string query = "SELECT staff_name FROM staff WHERE login_name = ?";
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@username", username);
+                        command.Parameters.AddWithValue("?", username);
 
-                        staffName = (string)command.ExecuteScalar();
+                        staffName = command.ExecuteScalar()?.ToString();
                     }
                 }
             }
@@ -125,7 +125,7 @@ namespace ITP4915M_Project
 
         private string GetTitle(string username)
         {
-            string title = null;
+            string title = "";
 
             try
             {
@@ -133,22 +133,29 @@ namespace ITP4915M_Project
                 {
                     connection.Open();
 
-                    string query = "SELECT title FROM Staff WHERE userName = @username";
+                    string query = "SELECT R.role_name FROM staff AS S INNER JOIN role AS R ON S.role_id = R.role_id WHERE S.login_name = ?";
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@username", username);
+                        command.Parameters.AddWithValue("?", username);
 
-                        title = (string)command.ExecuteScalar();
+                        using (OleDbDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                title = reader["role_name"].ToString();
+                            }
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while retrieving title: " + ex.Message);
+                MessageBox.Show("An error occurred while fetching the title: " + ex.Message);
             }
 
             return title;
         }
+
         private string GetRestaurant(string username)
         {
             string restaurant = null;
@@ -159,89 +166,76 @@ namespace ITP4915M_Project
                 {
                     connection.Open();
 
-                    string query = "SELECT R.title FROM Staff AS S INNER JOIN Restaurant AS R ON S.staff_id = R.staff_id WHERE S.userName = @username";
+                    string query = "SELECT R.restaurant_name FROM staff AS S INNER JOIN Restaurant AS R ON S.staff_id = R.staff_id WHERE S.login_name = ?";
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@username", username);
+                        command.Parameters.AddWithValue("?", username);
 
-                        restaurant = (string)command.ExecuteScalar();
+                        restaurant = command.ExecuteScalar()?.ToString();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while retrieving title: " + ex.Message);
+                MessageBox.Show("An error occurred while retrieving restaurant: " + ex.Message);
             }
 
             return restaurant;
         }
 
+        //private void txtUserName_Leave(object sender, EventArgs e)
+        //{
+        //    if (txtUserName.Text == "")
+        //    {
+        //        txtUserName.Text = "UserName";
+        //        txtUserName.ForeColor = Color.Silver;
+        //        txtUserName.TextAlign = HorizontalAlignment.Center;
+        //    }
+        //}
 
-        private void txtUserName_Leave(object sender, EventArgs e)
-        {
-            if (txtUserName.Text == "")
-            {
-                txtUserName.Text = "UserName";
-                txtUserName.ForeColor = Color.Silver;
-                txtUserName.TextAlign = HorizontalAlignment.Center;
-            }
-        }
+        //private void txtPassword_Enter(object sender, EventArgs e)
+        //{
+        //    if (txtPassword.Text == "Password")
+        //    {
+        //        txtPassword.Text = "";
+        //        txtPassword.ForeColor = Color.Black;
+        //    }
+        //}
 
-        private void txtPassword_Enter(object sender, EventArgs e)
-        {
-            if (txtPassword.Text == "Password")
-            {
-                txtPassword.Text = "";
-                txtPassword.ForeColor = Color.Black;
-            }
-        }
+        //private void txtPassword_Leave(object sender, EventArgs e)
+        //{
+        //    if (txtPassword.Text == "")
+        //    {
+        //        txtPassword.Text = "Password";
+        //        txtPassword.ForeColor = Color.Silver;
+        //    }
+        //}
 
-        private void txtPassword_Leave(object sender, EventArgs e)
-        {
-            if (txtPassword.Text == "")
-            {
-                txtPassword.Text = "Password";
-                txtPassword.ForeColor = Color.Silver;
-            }
-        }
+        //private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if (txtPassword.Text == "Password")
+        //    {
+        //        txtPassword.Text = "";
+        //        txtPassword.ForeColor = Color.Black;
+        //    }
 
-        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (txtPassword.Text == "Password")
-            {
-                txtPassword.Text = "";
-                txtPassword.ForeColor = Color.Black;
-            }
-
-            password += e.KeyChar;
-            txtPassword.Text += "*";
-            txtPassword.Select(txtPassword.Text.Length, 0);
-            e.Handled = true;
-        }
-
+        //    password += e.KeyChar;
+        //    txtPassword.Text += "*";
+        //    txtPassword.Select(txtPassword.Text.Length, 0);
+        //    e.Handled = true;
+        //}
 
         private void Login_Load(object sender, EventArgs e)
         {
             // Code to execute when the login form is loaded
         }
-
-        private void btnlogin_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPassword_Click(object sender, EventArgs e)
-        {
-
-        }
     }
-}
-public static class GlobalUser
-{
-    public static string StaffID { get; set; }
-    public static string StaffName { get; set; }
-    public static string Title { get; set; }
-    public static string Restaurant { get; set; }
 
-
+    public static class GlobalUser
+    {
+        public static int StaffID { get; set; }
+        public static string StaffName { get; set; }
+        public static string Title { get; set; }
+        public static string Restaurant { get; set; }
+    }
 }

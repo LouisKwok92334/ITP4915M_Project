@@ -23,6 +23,8 @@ namespace ITP4915M_Project
         {
             InitializeComponent();
             random = new Random();
+            label1.Text = GlobalUser.StaffName;
+            label2.Text = GlobalUser.Title;
         }
 
         //Method
