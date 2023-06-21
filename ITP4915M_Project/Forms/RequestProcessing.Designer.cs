@@ -29,15 +29,26 @@ namespace ITP4915M_Project.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.iTP4915DataSet = new ITP4915M_Project.ITP4915DataSet();
+            this.purchaseorderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.purchase_orderTableAdapter = new ITP4915M_Project.ITP4915DataSetTableAdapters.purchase_orderTableAdapter();
+            this.iTP4915DataSet1 = new ITP4915M_Project.ITP4915DataSet1();
+            this.purchaseorderBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.purchase_orderTableAdapter1 = new ITP4915M_Project.ITP4915DataSet1TableAdapters.purchase_orderTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iTP4915DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseorderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTP4915DataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseorderBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -75,13 +86,17 @@ namespace ITP4915M_Project.Forms
             this.label1.TabIndex = 3;
             this.label1.Text = "SearchID";
             // 
-            // comboBox1
+            // cbStatus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(91, 96);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(178, 20);
-            this.comboBox1.TabIndex = 4;
+            this.cbStatus.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.purchaseorderBindingSource, "status", true));
+            this.cbStatus.DataSource = this.purchaseorderBindingSource1;
+            this.cbStatus.DisplayMember = "status";
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Location = new System.Drawing.Point(91, 96);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(178, 20);
+            this.cbStatus.TabIndex = 4;
+            this.cbStatus.ValueMember = "status";
             // 
             // label2
             // 
@@ -97,7 +112,7 @@ namespace ITP4915M_Project.Forms
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cbStatus);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(56, 28);
             this.groupBox1.Name = "groupBox1";
@@ -105,6 +120,34 @@ namespace ITP4915M_Project.Forms
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Contract Detail";
+            // 
+            // iTP4915DataSet
+            // 
+            this.iTP4915DataSet.DataSetName = "ITP4915DataSet";
+            this.iTP4915DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // purchaseorderBindingSource
+            // 
+            this.purchaseorderBindingSource.DataMember = "purchase_order";
+            this.purchaseorderBindingSource.DataSource = this.iTP4915DataSet;
+            // 
+            // purchase_orderTableAdapter
+            // 
+            this.purchase_orderTableAdapter.ClearBeforeFill = true;
+            // 
+            // iTP4915DataSet1
+            // 
+            this.iTP4915DataSet1.DataSetName = "ITP4915DataSet1";
+            this.iTP4915DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // purchaseorderBindingSource1
+            // 
+            this.purchaseorderBindingSource1.DataMember = "purchase_order";
+            this.purchaseorderBindingSource1.DataSource = this.iTP4915DataSet1;
+            // 
+            // purchase_orderTableAdapter1
+            // 
+            this.purchase_orderTableAdapter1.ClearBeforeFill = true;
             // 
             // RequestProcessing
             // 
@@ -115,9 +158,14 @@ namespace ITP4915M_Project.Forms
             this.Controls.Add(this.dataGridView1);
             this.Name = "RequestProcessing";
             this.Text = "RequestProcessing";
+            this.Load += new System.EventHandler(this.RequestProcessing_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iTP4915DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseorderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTP4915DataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseorderBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -128,8 +176,14 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private ITP4915DataSet iTP4915DataSet;
+        private System.Windows.Forms.BindingSource purchaseorderBindingSource;
+        private ITP4915DataSetTableAdapters.purchase_orderTableAdapter purchase_orderTableAdapter;
+        private ITP4915DataSet1 iTP4915DataSet1;
+        private System.Windows.Forms.BindingSource purchaseorderBindingSource1;
+        private ITP4915DataSet1TableAdapters.purchase_orderTableAdapter purchase_orderTableAdapter1;
     }
 }

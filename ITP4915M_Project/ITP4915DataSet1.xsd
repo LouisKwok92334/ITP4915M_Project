@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ITP4915DataSet1" targetNamespace="http://tempuri.org/ITP4915DataSet1.xsd" xmlns:mstns="http://tempuri.org/ITP4915DataSet1.xsd" xmlns="http://tempuri.org/ITP4915DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ITP4915ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ITP4915ConnectionString (Settings)" PropertyReference="ApplicationSettings.ITP4915M_Project.Properties.Settings.GlobalReference.Default.ITP4915ConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="purchase_orderTableAdapter" GeneratorDataComponentClassName="purchase_orderTableAdapter" Name="purchase_order" UserDataComponentName="purchase_orderTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ITP4915ConnectionString (Settings)" DbObjectName="purchase_order" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT status FROM purchase_order</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="status" DataSetColumn="status" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ITP4915DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="ITP4915DataSet1" msprop:Generator_DataSetName="ITP4915DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="purchase_order" msprop:Generator_RowEvHandlerName="purchase_orderRowChangeEventHandler" msprop:Generator_RowDeletedName="purchase_orderRowDeleted" msprop:Generator_RowDeletingName="purchase_orderRowDeleting" msprop:Generator_RowEvArgName="purchase_orderRowChangeEvent" msprop:Generator_TablePropName="purchase_order" msprop:Generator_RowChangedName="purchase_orderRowChanged" msprop:Generator_RowChangingName="purchase_orderRowChanging" msprop:Generator_TableClassName="purchase_orderDataTable" msprop:Generator_RowClassName="purchase_orderRow" msprop:Generator_TableVarName="tablepurchase_order" msprop:Generator_UserTableName="purchase_order">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="status" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_UserColumnName="status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
