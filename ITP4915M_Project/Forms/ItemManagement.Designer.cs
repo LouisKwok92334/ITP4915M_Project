@@ -50,6 +50,8 @@ namespace ITP4915M_Project.Forms
             this.btnBPA = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnInventoryLog = new System.Windows.Forms.Button();
+            this.butRequestItem = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -250,7 +252,7 @@ namespace ITP4915M_Project.Forms
             // 
             this.btnBPA.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnBPA.AllowDrop = true;
-            this.btnBPA.Location = new System.Drawing.Point(259, 254);
+            this.btnBPA.Location = new System.Drawing.Point(289, 468);
             this.btnBPA.Margin = new System.Windows.Forms.Padding(2);
             this.btnBPA.Name = "btnBPA";
             this.btnBPA.Size = new System.Drawing.Size(77, 26);
@@ -280,11 +282,39 @@ namespace ITP4915M_Project.Forms
             this.pictureBox1.TabIndex = 39;
             this.pictureBox1.TabStop = false;
             // 
+            // btnInventoryLog
+            // 
+            this.btnInventoryLog.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnInventoryLog.AllowDrop = true;
+            this.btnInventoryLog.Location = new System.Drawing.Point(65, 468);
+            this.btnInventoryLog.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInventoryLog.Name = "btnInventoryLog";
+            this.btnInventoryLog.Size = new System.Drawing.Size(124, 26);
+            this.btnInventoryLog.TabIndex = 40;
+            this.btnInventoryLog.Text = "Inventory Log";
+            this.btnInventoryLog.UseVisualStyleBackColor = true;
+            this.btnInventoryLog.Click += new System.EventHandler(this.btnInventoryLog_Click);
+            // 
+            // butRequestItem
+            // 
+            this.butRequestItem.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.butRequestItem.AllowDrop = true;
+            this.butRequestItem.Location = new System.Drawing.Point(193, 468);
+            this.butRequestItem.Margin = new System.Windows.Forms.Padding(2);
+            this.butRequestItem.Name = "butRequestItem";
+            this.butRequestItem.Size = new System.Drawing.Size(92, 26);
+            this.butRequestItem.TabIndex = 41;
+            this.butRequestItem.Text = "Request Item";
+            this.butRequestItem.UseVisualStyleBackColor = true;
+            this.butRequestItem.Click += new System.EventHandler(this.butRequestItem_Click);
+            // 
             // ItemManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 505);
+            this.Controls.Add(this.butRequestItem);
+            this.Controls.Add(this.btnInventoryLog);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.btnBPA);
@@ -328,5 +358,7 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtVirualID;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnInventoryLog;
+        private System.Windows.Forms.Button butRequestItem;
     }
 }

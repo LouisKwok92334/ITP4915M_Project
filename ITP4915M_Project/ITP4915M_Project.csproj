@@ -197,6 +197,9 @@
     <EmbeddedResource Include="Forms\RequestManagement.resx">
       <DependentUpon>RequestManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RequestProcessing.resx">
+      <DependentUpon>RequestProcessing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SystemSecurityControl.resx">
       <DependentUpon>SystemSecurityControl.cs</DependentUpon>
     </EmbeddedResource>
