@@ -69,13 +69,14 @@ namespace ITP4915M_Project.Forms
             DateTime endDate = dateTimePicker2.Value.Date;
 
             string query = @"
-    SELECT bpa.*, item.item_name 
+       SELECT bpa.*, item.item_name 
     FROM bpa 
-    INNER JOIN item ON bpa.item_id = item.item_id 
-    WHERE (bpa.bpa_id = ? OR ? = '') AND 
-    (bpa.item_id = ? OR ? = '') AND 
+    INNER JOIN bpa_item ON bpa.bpa_id = bpa_item.bpa_id
+    INNER JOIN item ON bpa_item.item_id = item.item_id
+    WHERE (bpa.bpa_id = ? OR ? = 0) AND 
+    (bpa_item.item_id = ? OR ? = 0) AND 
     (bpa.effectived_date >= ? OR ? IS NULL) AND 
-    (bpa.end_date <= ? OR ? IS NULL)";
+    (bpa.end_date <= ? OR ? IS NULL) ";
 
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
 
@@ -87,10 +88,10 @@ namespace ITP4915M_Project.Forms
                 command.Parameters.AddWithValue("@bpaId2", string.IsNullOrEmpty(bpaId) ? (object)DBNull.Value : bpaId);
                 command.Parameters.AddWithValue("@itemId", string.IsNullOrEmpty(itemId) ? (object)DBNull.Value : itemId);
                 command.Parameters.AddWithValue("@itemId2", string.IsNullOrEmpty(itemId) ? (object)DBNull.Value : itemId);
-                command.Parameters.AddWithValue("@effectivedDate", effectivedDate);
-                command.Parameters.AddWithValue("@effectivedDate2", effectivedDate);
-                command.Parameters.AddWithValue("@endDate", endDate);
-                command.Parameters.AddWithValue("@endDate2", endDate);
+                command.Parameters.AddWithValue("@effectivedDate", effectivedDate == DateTime.MinValue ? (object)DBNull.Value : effectivedDate);
+                command.Parameters.AddWithValue("@effectivedDate2", effectivedDate == DateTime.MinValue ? (object)DBNull.Value : effectivedDate);
+                command.Parameters.AddWithValue("@endDate", endDate == DateTime.MinValue ? (object)DBNull.Value : endDate);
+                command.Parameters.AddWithValue("@endDate2", endDate == DateTime.MinValue ? (object)DBNull.Value : endDate);
 
                 OleDbDataAdapter adapter = new OleDbDataAdapter(command);
 

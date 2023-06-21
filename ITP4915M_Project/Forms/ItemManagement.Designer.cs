@@ -252,7 +252,7 @@ namespace ITP4915M_Project.Forms
             // 
             this.btnBPA.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnBPA.AllowDrop = true;
-            this.btnBPA.Location = new System.Drawing.Point(289, 468);
+            this.btnBPA.Location = new System.Drawing.Point(311, 468);
             this.btnBPA.Margin = new System.Windows.Forms.Padding(2);
             this.btnBPA.Name = "btnBPA";
             this.btnBPA.Size = new System.Drawing.Size(77, 26);
@@ -299,7 +299,7 @@ namespace ITP4915M_Project.Forms
             // 
             this.butRequestItem.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.butRequestItem.AllowDrop = true;
-            this.butRequestItem.Location = new System.Drawing.Point(193, 468);
+            this.butRequestItem.Location = new System.Drawing.Point(204, 468);
             this.butRequestItem.Margin = new System.Windows.Forms.Padding(2);
             this.butRequestItem.Name = "butRequestItem";
             this.butRequestItem.Size = new System.Drawing.Size(92, 26);

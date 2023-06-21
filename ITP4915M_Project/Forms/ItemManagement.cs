@@ -199,9 +199,20 @@ namespace ITP4915M_Project.Forms
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
             selectedItemId = txtId.Text;
             string itemId = selectedItemId; // Replace with the appropriate item ID
-            string query = "SELECT b.bpa_id, s.supplier_name AS SupplierName, b.quantity AS Quantity, b.total_price AS TotalPrice, b.effectived_date, b.end_date, b.status " +
-                           "FROM bpa b, supplier s " +
-                           "WHERE b.supplier_id = s.supplier_id AND b.item_id = @itemId";
+            string query = @"
+    SELECT 
+        b.bpa_id, 
+        s.supplier_name AS SupplierName, 
+        bi.qty AS Quantity, 
+        bi.price AS Price, 
+        b.effectived_date, 
+        b.end_date, 
+        b.status 
+    FROM bpa b, bpa_item bi, supplier s
+    WHERE b.bpa_id = bi.bpa_id 
+    AND b.supplier_id = s.supplier_id 
+    AND bi.item_id = @itemId";
+
 
             try
             {

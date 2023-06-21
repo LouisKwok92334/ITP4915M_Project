@@ -227,53 +227,6 @@ namespace ITP4915M_Project.Forms
             return 0;
         }
 
-        private decimal GetItemPrice(string itemName)
-        {
-            try
-            {
-                using (OleDbConnection connection = new OleDbConnection(connectionString))
-                {
-                    connection.Open();
-
-                    // Query the "item" table to retrieve the item_price based on the item name
-                    string query = "SELECT price FROM item WHERE item_name = @item_name";
-                    OleDbCommand command = new OleDbCommand(query, connection);
-                    command.Parameters.AddWithValue("@item_name", itemName);
-
-                    OleDbDataReader reader = command.ExecuteReader();
-
-                    // Using while loop to read through the results
-                    while (reader.Read())
-                    {
-                        // Check if the first column is DBNull
-                        if (reader[0] == DBNull.Value)
-                        {
-                            MessageBox.Show("The first column of the result set is DBNull.");
-                            continue;
-                        }
-
-                        // Check if the first column can be parsed as a decimal
-                        string priceWithCurrency = reader[0].ToString();
-                        string priceString = priceWithCurrency.Replace("HK$", "").Trim(); // Remove the currency symbol
-                        if (decimal.TryParse(priceString, out decimal itemPrice))
-                        {
-                            return itemPrice;
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Cannot parse '{priceString}' as a decimal.");
-                        }
-                    }
-
-                    return 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while retrieving item_price: " + ex.Message);
-                return 0;
-            }
-        }
 
 
         public static class Prompt
@@ -302,67 +255,130 @@ namespace ITP4915M_Project.Forms
         }
 
 
-       private void butNext_Click(object sender, EventArgs e)
-{
-    try
-    {
-        using (OleDbConnection connection = new OleDbConnection(connectionString))
+       
+
+        private void butNext_Click(object sender, EventArgs e)
         {
-            connection.Open();
-
-            string insertQuery = "INSERT INTO bpa ( item_id, quantity, supplier_id, effectived_date, end_date, status, total_price) " +
-                                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
-            OleDbCommand insertCommand = new OleDbCommand(insertQuery, connection);
-            string selectedItem = lisAdd.SelectedItem.ToString();
-
-            string[] parts = selectedItem.Split('-');
-            if (parts.Length > 0)
+            try
             {
-                string itemName = parts[0].Trim(); // Extract the item name
-
-                int itemId = GetItemId(itemName); // Get the item id using the extracted item name
-
-                decimal itemPrice = GetItemPrice(itemName);
-
-                int supplierId = GetSupplierId(cmoSupplier.SelectedItem.ToString());
-           
-                insertCommand.Parameters.AddWithValue("@item_id", itemId); 
-                insertCommand.Parameters.AddWithValue("@quantity", quantity);
-                insertCommand.Parameters.AddWithValue("@supplier_id", supplierId);
-                        insertCommand.Parameters.AddWithValue("@effectived_date", dtpEffectivedDate.Value.ToString("MM/dd/yyyy"));
-                        insertCommand.Parameters.AddWithValue("@end_date", dtpEndDate.Value.ToString("MM/dd/yyyy"));
-
-
-                        insertCommand.Parameters.AddWithValue("@status", txtStatus.Text.ToString());
-
-                decimal totalPrice;
-                if (decimal.TryParse(txtTotalPrice.Text, out totalPrice))
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
                 {
-                    insertCommand.Parameters.AddWithValue("@total_price", totalPrice);
-                }
-                else
-                {
-                    // Handle invalid total price input
-                    MessageBox.Show("Invalid total price. Please enter a valid number.");
-                    return;
-                }
+                    connection.Open();
 
-                // Execute the insert command
-                insertCommand.ExecuteNonQuery();
+                    string insertQuery = "INSERT INTO bpa (supplier_id, effectived_date, end_date, status, total_price) " +
+                                            "VALUES (?, ?, ?, ?, ?)";
+                    OleDbCommand insertCommand = new OleDbCommand(insertQuery, connection);
+
+                    int supplierId = GetSupplierId(cmoSupplier.SelectedItem.ToString());
+                    insertCommand.Parameters.AddWithValue("@supplier_id", supplierId);
+                    insertCommand.Parameters.AddWithValue("@effectived_date", dtpEffectivedDate.Value.ToString("MM/dd/yyyy"));
+                    insertCommand.Parameters.AddWithValue("@end_date", dtpEndDate.Value.ToString("MM/dd/yyyy"));
+                    insertCommand.Parameters.AddWithValue("@status", txtStatus.Text.ToString());
+
+                    decimal totalPrice;
+                    if (decimal.TryParse(txtTotalPrice.Text, out totalPrice))
+                    {
+                        insertCommand.Parameters.AddWithValue("@total_price", totalPrice);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid total price. Please enter a valid number.");
+                        return;
+                    }
+
+                    insertCommand.ExecuteNonQuery();
+                    connection.Close();
+
+                    MessageBox.Show("BPA data uploaded successfully.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while uploading BPA data: " + ex.Message);
+            }
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string insertQuery = "INSERT INTO bpa_item (bpa_id, item_id, qty, price) " +
+                                            "VALUES (?, ?, ?, ?)";
+                    OleDbCommand insertCommand = new OleDbCommand(insertQuery, connection);
+
+                    // Loop through each item in the list
+                    foreach (var listItem in lisAdd.Items)
+                    {
+                        string selectedItem = listItem.ToString();
+
+                        string[] parts = selectedItem.Split('-');
+                        if (parts.Length > 0)
+                        {
+                            string itemName = parts[0].Trim();
+
+                            int itemId = GetItemId(itemName);
+
+                            decimal itemPrice = GetItemPrice(itemName);
+
+                            int bpaId = GetLatestBpaId();
+
+                            insertCommand.Parameters.Clear(); // Clear parameters before adding new ones
+                            insertCommand.Parameters.AddWithValue("@bpa_id", bpaId);
+                            insertCommand.Parameters.AddWithValue("@item_id", itemId);
+                            insertCommand.Parameters.AddWithValue("@qty", quantity);
+                            insertCommand.Parameters.AddWithValue("@price", itemPrice);
+
+                            insertCommand.ExecuteNonQuery();
+                        }
+                    }
+
+                    connection.Close();
+
+                    MessageBox.Show("BPA item data uploaded successfully.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while uploading BPA item data: " + ex.Message);
             }
 
-            connection.Close();
-
-            MessageBox.Show("BPA data uploaded successfully.");
         }
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("An error occurred while uploading BPA data: " + ex.Message);
-    }
-}
 
+        private decimal GetItemPrice(string itemName)
+        {
+            if (itemPrices.TryGetValue(itemName, out decimal price))
+            {
+                return price;
+            }
+            else
+            {
+                throw new Exception($"The item '{itemName}' does not have a recorded price.");
+            }
+        }
 
+        private int GetLatestBpaId()
+        {
+            int latestBpaId = -1;
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT MAX(bpa_id) FROM bpa";
+                    OleDbCommand command = new OleDbCommand(query, connection);
+                    object result = command.ExecuteScalar();
+                    if (result != null && int.TryParse(result.ToString(), out latestBpaId))
+                    {
+                        return latestBpaId;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while getting the latest BPA ID: " + ex.Message);
+            }
+            return latestBpaId;
+        }
         private int GetItemId(string itemName)
         {
             try
@@ -438,6 +454,5 @@ namespace ITP4915M_Project.Forms
                 return 0;
             }
         }
-
     }
 }
