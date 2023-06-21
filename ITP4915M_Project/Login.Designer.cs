@@ -154,6 +154,7 @@ namespace ITP4915M_Project
             this.btnlogin.Text = "Login";
             this.btnlogin.ThemeAuthor = "Narwin";
             this.btnlogin.ThemeName = "MetroLite";
+            this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click_1);
             // 
             // txtPassword
             // 
@@ -183,6 +184,7 @@ namespace ITP4915M_Project
             this.txtPassword.ThemeName = "MetroLite";
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.WatermarkText = "";
+            this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
             // 
             // metroSetLabel1
             // 

@@ -40,9 +40,9 @@ namespace ITP4915M_Project.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnReset = new System.Windows.Forms.Button();
-            this.btnViewBPA = new System.Windows.Forms.Button();
             this.cboSupplier = new System.Windows.Forms.ComboBox();
             this.cboStatus = new System.Windows.Forms.ComboBox();
+            this.btnCreateBPA = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -98,7 +98,7 @@ namespace ITP4915M_Project.Forms
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(52, 322);
+            this.label7.Location = new System.Drawing.Point(51, 320);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 12);
@@ -140,7 +140,7 @@ namespace ITP4915M_Project.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 259);
+            this.label1.Location = new System.Drawing.Point(52, 271);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 12);
@@ -149,7 +149,7 @@ namespace ITP4915M_Project.Forms
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(120, 256);
+            this.txtSearch.Location = new System.Drawing.Point(120, 268);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(183, 22);
@@ -157,7 +157,7 @@ namespace ITP4915M_Project.Forms
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(404, 447);
+            this.btnReset.Location = new System.Drawing.Point(695, 447);
             this.btnReset.Margin = new System.Windows.Forms.Padding(2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(69, 30);
@@ -166,21 +166,10 @@ namespace ITP4915M_Project.Forms
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
-            // btnViewBPA
-            // 
-            this.btnViewBPA.Location = new System.Drawing.Point(672, 447);
-            this.btnViewBPA.Margin = new System.Windows.Forms.Padding(2);
-            this.btnViewBPA.Name = "btnViewBPA";
-            this.btnViewBPA.Size = new System.Drawing.Size(78, 30);
-            this.btnViewBPA.TabIndex = 52;
-            this.btnViewBPA.Text = "View BPA";
-            this.btnViewBPA.UseVisualStyleBackColor = true;
-            this.btnViewBPA.Click += new System.EventHandler(this.btnViewBPA_Click);
-            // 
             // cboSupplier
             // 
             this.cboSupplier.FormattingEnabled = true;
-            this.cboSupplier.Location = new System.Drawing.Point(120, 322);
+            this.cboSupplier.Location = new System.Drawing.Point(119, 320);
             this.cboSupplier.Name = "cboSupplier";
             this.cboSupplier.Size = new System.Drawing.Size(183, 20);
             this.cboSupplier.TabIndex = 53;
@@ -193,14 +182,24 @@ namespace ITP4915M_Project.Forms
             this.cboStatus.Size = new System.Drawing.Size(183, 20);
             this.cboStatus.TabIndex = 54;
             // 
+            // btnCreateBPA
+            // 
+            this.btnCreateBPA.Location = new System.Drawing.Point(404, 447);
+            this.btnCreateBPA.Name = "btnCreateBPA";
+            this.btnCreateBPA.Size = new System.Drawing.Size(80, 30);
+            this.btnCreateBPA.TabIndex = 55;
+            this.btnCreateBPA.Text = "Create BPA";
+            this.btnCreateBPA.UseVisualStyleBackColor = true;
+            this.btnCreateBPA.Click += new System.EventHandler(this.btnCreateBPA_Click);
+            // 
             // ContractManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 505);
+            this.Controls.Add(this.btnCreateBPA);
             this.Controls.Add(this.cboStatus);
             this.Controls.Add(this.cboSupplier);
-            this.Controls.Add(this.btnViewBPA);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSearch);
@@ -234,8 +233,8 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnViewBPA;
         private System.Windows.Forms.ComboBox cboSupplier;
         private System.Windows.Forms.ComboBox cboStatus;
+        private System.Windows.Forms.Button btnCreateBPA;
     }
 }

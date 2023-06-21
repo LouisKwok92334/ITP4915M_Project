@@ -27,6 +27,7 @@ namespace ITP4915M_Project
                 GlobalUser.StaffID = GetStaffID(username);
                 GlobalUser.StaffName = GetStaffName(username);
                 GlobalUser.Title = GetTitle(username);
+                GlobalUser.Restaurant = GetRestaurant(username);
 
                 MainMenu mainMenu = new MainMenu();
                 mainMenu.Show();
@@ -148,13 +149,33 @@ namespace ITP4915M_Project
 
             return title;
         }
-
-        public static class GlobalUser
+        private string GetRestaurant(string username)
         {
-            public static string StaffID { get; set; }
-            public static string StaffName { get; set; }
-            public static string Title { get; set; }
+            string restaurant = null;
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT R.title FROM Staff AS S INNER JOIN Restaurant AS R ON S.staff_id = R.staff_id WHERE S.userName = @username";
+                    using (OleDbCommand command = new OleDbCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@username", username);
+
+                        restaurant = (string)command.ExecuteScalar();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while retrieving title: " + ex.Message);
+            }
+
+            return restaurant;
         }
+
 
         private void txtUserName_Leave(object sender, EventArgs e)
         {
@@ -203,5 +224,24 @@ namespace ITP4915M_Project
         {
             // Code to execute when the login form is loaded
         }
+
+        private void btnlogin_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+}
+public static class GlobalUser
+{
+    public static string StaffID { get; set; }
+    public static string StaffName { get; set; }
+    public static string Title { get; set; }
+    public static string Restaurant { get; set; }
+
+
 }

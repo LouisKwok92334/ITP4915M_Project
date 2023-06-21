@@ -140,9 +140,9 @@ namespace ITP4915M_Project.Forms
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(329, 477);
+            this.btnReset.Location = new System.Drawing.Point(329, 474);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.Size = new System.Drawing.Size(75, 26);
             this.btnReset.TabIndex = 11;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;

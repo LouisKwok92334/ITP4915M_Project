@@ -30,5 +30,22 @@ namespace ITP4915M_Project.Forms
                 }
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string staffName = GlobalUser.StaffName;
+            textBox1.Text = staffName;
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            string restaurant = GlobalUser.Restaurant;
+            textBox1.Text = restaurant;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            textBox2.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        }
     }
 }

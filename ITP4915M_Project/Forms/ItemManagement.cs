@@ -3,7 +3,7 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using ITP4915M_Project.Models;
-
+using System.Text.RegularExpressions;
 
 namespace ITP4915M_Project.Forms
 {
@@ -221,7 +221,7 @@ namespace ITP4915M_Project.Forms
                     connection.Open();
                     using (OleDbCommand command = new OleDbCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@itemId", itemId);
+                        command.Parameters.AddWithValue("@itemId", int.Parse(itemId));
                         using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
                         {
                             DataTable dataTable = new DataTable();
@@ -238,6 +238,11 @@ namespace ITP4915M_Project.Forms
                 MessageBox.Show("An error occurred: " + ex.Message);
             }
         }
+        private bool IsValidInteger(string input)
+        {
+            Regex regex = new Regex(@"^\d+$"); // Regular expression to match an integer
+            return regex.IsMatch(input);
+        }
 
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -247,11 +252,18 @@ namespace ITP4915M_Project.Forms
                 txtStatus.ReadOnly = false;
                 btnEdit.Text = "OK";
                 isEditMode = true;
+                txtStock.ReadOnly = false;
             }
             else // If in edit mode, save changes and disable editing
             {
+                if (!IsValidInteger(txtStock.Text))
+                {
+                    MessageBox.Show("The stock value must be a valid integer.");
+                    return;
+                }
+
                 // Update the database with the new values from txtStock and txtStatus
-                UpdateDatabase(txtStatus.Text);
+                UpdateDatabase(txtStock.Text, txtStatus.Text);
 
                 txtStock.ReadOnly = true;
                 txtStatus.ReadOnly = true;
@@ -259,25 +271,46 @@ namespace ITP4915M_Project.Forms
                 isEditMode = false;
             }
         }
-        private void UpdateDatabase( string newStatus)
+        private void UpdateDatabase(string newStock, string newStatus)
         {
-            selectedItemId = txtId.Text;
-            string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
-            string itemId = selectedItemId; // Replace with the appropriate item ID
+            if (!int.TryParse(txtId.Text, out int itemId))
+            {
+                MessageBox.Show("Item ID must be an integer.");
+                return;
+            }
+            if (!int.TryParse(newStock, out int stockValue))
+            {
+                MessageBox.Show("New stock must be an integer.");
+                return;
+            }
 
-            string query = "UPDATE item SET status = @status WHERE item_id = @itemId";
+            string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
+
+            string queryUpdateStatus = "UPDATE item SET status = @status WHERE item_id = @itemId";
+            string queryInsertInventoryLog = "INSERT INTO inventory_log (item_id, remaining_stock, created_at) VALUES (@itemId, @stock, @timestamp)";
 
             try
             {
                 using (OleDbConnection connection = new OleDbConnection(connectionString))
-                using (OleDbCommand command = new OleDbCommand(query, connection))
                 {
-
-                    command.Parameters.AddWithValue("@status", newStatus);
-                    command.Parameters.AddWithValue("@itemId", itemId);
-
                     connection.Open();
-                    command.ExecuteNonQuery();
+
+                    // Update status
+                    using (OleDbCommand commandUpdateStatus = new OleDbCommand(queryUpdateStatus, connection))
+                    {
+                        commandUpdateStatus.Parameters.AddWithValue("@status", newStatus);
+                        commandUpdateStatus.Parameters.AddWithValue("@itemId", itemId);
+                        commandUpdateStatus.ExecuteNonQuery();
+                    }
+
+                    // Insert a new inventory log record
+                    using (OleDbCommand commandInsertInventoryLog = new OleDbCommand(queryInsertInventoryLog, connection))
+                    {
+                        commandInsertInventoryLog.Parameters.AddWithValue("@itemId", itemId);
+                        commandInsertInventoryLog.Parameters.AddWithValue("@stock", stockValue);
+                        commandInsertInventoryLog.Parameters.AddWithValue("@timestamp", DateTime.Now.ToString("M/d/yyyy hh:mm:ss"));
+                        commandInsertInventoryLog.ExecuteNonQuery();
+                    }
                 }
             }
             catch (Exception ex)
