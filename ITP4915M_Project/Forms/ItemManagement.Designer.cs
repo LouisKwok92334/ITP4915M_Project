@@ -49,9 +49,12 @@ namespace ITP4915M_Project.Forms
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnBPA = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnInventoryLog = new System.Windows.Forms.Button();
             this.butRequestItem = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.btnAddSupplier = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,6 +62,8 @@ namespace ITP4915M_Project.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtPrice);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtStatus);
             this.groupBox1.Controls.Add(this.label8);
@@ -67,6 +72,7 @@ namespace ITP4915M_Project.Forms
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.txtStock);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.txtId);
@@ -75,7 +81,7 @@ namespace ITP4915M_Project.Forms
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(359, 161);
+            this.groupBox1.Size = new System.Drawing.Size(359, 207);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Info";
@@ -83,7 +89,7 @@ namespace ITP4915M_Project.Forms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(191, 127);
+            this.label9.Location = new System.Drawing.Point(14, 173);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(32, 12);
@@ -92,7 +98,7 @@ namespace ITP4915M_Project.Forms
             // 
             // txtStatus
             // 
-            this.txtStatus.Location = new System.Drawing.Point(235, 124);
+            this.txtStatus.Location = new System.Drawing.Point(74, 163);
             this.txtStatus.Margin = new System.Windows.Forms.Padding(2);
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.ReadOnly = true;
@@ -132,7 +138,7 @@ namespace ITP4915M_Project.Forms
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(203, 34);
+            this.label6.Location = new System.Drawing.Point(192, 34);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(17, 12);
@@ -199,7 +205,7 @@ namespace ITP4915M_Project.Forms
             // 
             this.btnEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnEdit.AllowDrop = true;
-            this.btnEdit.Location = new System.Drawing.Point(347, 254);
+            this.btnEdit.Location = new System.Drawing.Point(260, 166);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(77, 26);
@@ -274,14 +280,6 @@ namespace ITP4915M_Project.Forms
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(462, 32);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(330, 253);
-            this.pictureBox1.TabIndex = 39;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnInventoryLog
             // 
             this.btnInventoryLog.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
@@ -308,11 +306,52 @@ namespace ITP4915M_Project.Forms
             this.butRequestItem.UseVisualStyleBackColor = true;
             this.butRequestItem.Click += new System.EventHandler(this.butRequestItem_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(462, 32);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(330, 253);
+            this.pictureBox1.TabIndex = 39;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(192, 131);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 12);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Price";
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(235, 127);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
+            this.txtPrice.Size = new System.Drawing.Size(102, 22);
+            this.txtPrice.TabIndex = 43;
+            // 
+            // btnAddSupplier
+            // 
+            this.btnAddSupplier.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnAddSupplier.AllowDrop = true;
+            this.btnAddSupplier.Location = new System.Drawing.Point(602, 468);
+            this.btnAddSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddSupplier.Name = "btnAddSupplier";
+            this.btnAddSupplier.Size = new System.Drawing.Size(95, 26);
+            this.btnAddSupplier.TabIndex = 42;
+            this.btnAddSupplier.Text = "Add Supplier";
+            this.btnAddSupplier.UseVisualStyleBackColor = true;
+            this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
+            // 
             // ItemManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 505);
+            this.Controls.Add(this.btnAddSupplier);
             this.Controls.Add(this.butRequestItem);
             this.Controls.Add(this.btnInventoryLog);
             this.Controls.Add(this.pictureBox1);
@@ -322,7 +361,6 @@ namespace ITP4915M_Project.Forms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtsearchItem);
-            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ItemManagement";
@@ -357,8 +395,11 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtVirualID;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnInventoryLog;
         private System.Windows.Forms.Button butRequestItem;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnAddSupplier;
     }
 }

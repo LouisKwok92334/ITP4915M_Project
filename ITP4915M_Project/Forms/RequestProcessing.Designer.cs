@@ -43,10 +43,10 @@ namespace ITP4915M_Project.Forms
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(37, 235);
+            this.dataGridView1.Location = new System.Drawing.Point(451, 28);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(734, 190);
+            this.dataGridView1.Size = new System.Drawing.Size(304, 397);
             this.dataGridView1.TabIndex = 0;
             // 
             // textBox1
@@ -99,7 +99,7 @@ namespace ITP4915M_Project.Forms
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(37, 28);
+            this.groupBox1.Location = new System.Drawing.Point(56, 28);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(322, 188);
             this.groupBox1.TabIndex = 6;

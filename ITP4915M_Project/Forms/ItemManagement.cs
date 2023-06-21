@@ -22,7 +22,7 @@ namespace ITP4915M_Project.Forms
         {
             string searchItem = txtsearchItem.Text;
 
-            string query = "SELECT i.item_id AS Id, i.item_name AS Name, i.virtual_id AS VirtualId, il.remaining_stock AS Stock, i.status, s.supplier_name AS SupplierName " +
+            string query = "SELECT i.item_id AS Id, i.item_name AS Name, i.virtual_id AS VirtualId, il.remaining_stock AS Stock, i.status, s.supplier_name AS SupplierName, i.price As Price " +
     "FROM item i, supplier s, inventory_log il, (SELECT item_id, MAX(inventory_log_id) AS max_log_id FROM inventory_log GROUP BY item_id) max_il " +
     "WHERE i.supplier_id = s.supplier_id AND il.item_id = i.item_id AND il.item_id = max_il.item_id AND il.inventory_log_id = max_il.max_log_id ";
 
@@ -56,6 +56,7 @@ namespace ITP4915M_Project.Forms
                                 txtStock.Text = reader["Stock"].ToString();
                                 txtStatus.Text = reader["status"].ToString();
                                 txtSupplierName.Text = reader["SupplierName"].ToString();
+                                txtPrice.Text = reader["Price"].ToString();
                             }
                             else
                             {
@@ -253,6 +254,7 @@ namespace ITP4915M_Project.Forms
                 btnEdit.Text = "OK";
                 isEditMode = true;
                 txtStock.ReadOnly = false;
+                txtPrice.ReadOnly = false;
             }
             else // If in edit mode, save changes and disable editing
             {
@@ -263,15 +265,16 @@ namespace ITP4915M_Project.Forms
                 }
 
                 // Update the database with the new values from txtStock and txtStatus
-                UpdateDatabase(txtStock.Text, txtStatus.Text);
+                UpdateDatabase(txtStock.Text, txtStatus.Text, txtPrice.Text);
 
                 txtStock.ReadOnly = true;
                 txtStatus.ReadOnly = true;
                 btnEdit.Text = "Edit";
                 isEditMode = false;
+                txtPrice.ReadOnly = true;
             }
         }
-        private void UpdateDatabase(string newStock, string newStatus)
+        private void UpdateDatabase(string newStock, string newStatus, String newprice)
         {
             if (!int.TryParse(txtId.Text, out int itemId))
             {
@@ -286,7 +289,8 @@ namespace ITP4915M_Project.Forms
 
             string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=ITP4915.accdb";
 
-            string queryUpdateStatus = "UPDATE item SET status = @status WHERE item_id = @itemId";
+            string queryUpdateStatus = "UPDATE item SET status = @status, price = @price WHERE item_id = @itemId";
+
             string queryInsertInventoryLog = "INSERT INTO inventory_log (item_id, remaining_stock, created_at) VALUES (@itemId, @stock, @timestamp)";
 
             try
@@ -299,6 +303,7 @@ namespace ITP4915M_Project.Forms
                     using (OleDbCommand commandUpdateStatus = new OleDbCommand(queryUpdateStatus, connection))
                     {
                         commandUpdateStatus.Parameters.AddWithValue("@status", newStatus);
+                        commandUpdateStatus.Parameters.AddWithValue("@price", newprice);
                         commandUpdateStatus.Parameters.AddWithValue("@itemId", itemId);
                         commandUpdateStatus.ExecuteNonQuery();
                     }
@@ -353,5 +358,63 @@ namespace ITP4915M_Project.Forms
         {
             btnSearch.PerformClick();
         }
+
+
+        private void btnAddSupplier_Click(object sender, EventArgs e)
+        {
+            // Prompt user for supplier name
+            string supplierName = Prompt.ShowDialog("Enter Supplier Name", "Add New Supplier");
+
+            if (!string.IsNullOrEmpty(supplierName))
+            {
+                try
+                {
+                    using (OleDbConnection connection = new OleDbConnection(ConnectionString))
+                    {
+                        connection.Open();
+
+                        string insertQuery = "INSERT INTO supplier (supplier_name, created_at, updated_at) VALUES (?, ?, ?)";
+                        OleDbCommand insertCommand = new OleDbCommand(insertQuery, connection);
+
+                        insertCommand.Parameters.AddWithValue("@supplier_name", supplierName);
+                        insertCommand.Parameters.AddWithValue("@created_at", DateTime.Now.ToString("dd/MM/yyyy"));
+                        insertCommand.Parameters.AddWithValue("@updated_at", DateTime.Now.ToString("dd/MM/yyyy"));
+
+                        insertCommand.ExecuteNonQuery();
+
+                        MessageBox.Show("Supplier added successfully.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while adding the supplier: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Operation cancelled or no input provided.");
+            }
+        }
+
+        public static class Prompt
+        {
+            public static string ShowDialog(string text, string caption)
+            {
+                Form prompt = new Form();
+                prompt.Width = 500;
+                prompt.Height = 150;
+                prompt.Text = caption;
+                Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
+                Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70 };
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+                prompt.Controls.Add(confirmation);
+                prompt.Controls.Add(textLabel);
+                prompt.Controls.Add(textBox);
+                prompt.ShowDialog();
+                return textBox.Text;
+            }
+        }
+
     }
 }

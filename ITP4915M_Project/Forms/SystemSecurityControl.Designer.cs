@@ -42,18 +42,20 @@ namespace ITP4915M_Project.Forms
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(117, 157);
+            this.dataGridView1.Location = new System.Drawing.Point(88, 126);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(964, 362);
+            this.dataGridView1.Size = new System.Drawing.Size(723, 290);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(966, 552);
+            this.btnEdit.Location = new System.Drawing.Point(724, 442);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(95, 35);
+            this.btnEdit.Size = new System.Drawing.Size(71, 28);
             this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -61,9 +63,10 @@ namespace ITP4915M_Project.Forms
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(840, 552);
+            this.btnDelete.Location = new System.Drawing.Point(630, 442);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(95, 35);
+            this.btnDelete.Size = new System.Drawing.Size(71, 28);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -71,25 +74,28 @@ namespace ITP4915M_Project.Forms
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(193, 89);
+            this.txtSearch.Location = new System.Drawing.Point(154, 71);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(143, 25);
+            this.txtSearch.Size = new System.Drawing.Size(108, 22);
             this.txtSearch.TabIndex = 4;
             // 
             // lbSearch
             // 
             this.lbSearch.AutoSize = true;
-            this.lbSearch.Location = new System.Drawing.Point(114, 92);
+            this.lbSearch.Location = new System.Drawing.Point(95, 74);
+            this.lbSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbSearch.Name = "lbSearch";
-            this.lbSearch.Size = new System.Drawing.Size(45, 15);
+            this.lbSearch.Size = new System.Drawing.Size(36, 12);
             this.lbSearch.TabIndex = 5;
             this.lbSearch.Text = "Search";
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(357, 89);
+            this.btnSearch.Location = new System.Drawing.Point(277, 71);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(63, 28);
+            this.btnSearch.Size = new System.Drawing.Size(47, 22);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -97,9 +103,10 @@ namespace ITP4915M_Project.Forms
             // 
             // btnAddUser
             // 
-            this.btnAddUser.Location = new System.Drawing.Point(117, 552);
+            this.btnAddUser.Location = new System.Drawing.Point(88, 442);
+            this.btnAddUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(95, 35);
+            this.btnAddUser.Size = new System.Drawing.Size(71, 28);
             this.btnAddUser.TabIndex = 7;
             this.btnAddUser.Text = "Add User";
             this.btnAddUser.UseVisualStyleBackColor = true;
@@ -107,9 +114,9 @@ namespace ITP4915M_Project.Forms
             // 
             // SystemSecurityControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1166, 631);
+            this.ClientSize = new System.Drawing.Size(874, 505);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lbSearch);
@@ -117,6 +124,7 @@ namespace ITP4915M_Project.Forms
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SystemSecurityControl";
             this.Text = "SystemSecurityControl";
             this.Load += new System.EventHandler(this.SystemSecurityControl_VisibleChanged);

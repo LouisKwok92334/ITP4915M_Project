@@ -238,10 +238,10 @@ namespace ITP4915M_Project.Forms
             createBPA.Show();
         }
 
-        //private void btnViewBPA_Click(object sender, EventArgs e)
-        //{
-        //    BPA bpa = new BPA();
-        //    bpa.Show();
-        //}
+        private void btnViewBPA_Click(object sender, EventArgs e)
+        {
+            BPA bpa = new BPA();
+            bpa.Show();
+        }
     }
 }

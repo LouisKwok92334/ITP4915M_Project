@@ -36,12 +36,13 @@ namespace ITP4915M_Project.Forms
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cboSupplier = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.cmoCategory = new System.Windows.Forms.ComboBox();
-            this.btnAdd = new System.Windows.Forms.Button();
             this.txtstatus = new System.Windows.Forms.TextBox();
+            this.cmoCategory = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.cboSupplier = new System.Windows.Forms.ComboBox();
+            this.btnAddSupplier = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -105,14 +106,6 @@ namespace ITP4915M_Project.Forms
             this.label5.TabIndex = 9;
             this.label5.Text = "Status";
             // 
-            // cboSupplier
-            // 
-            this.cboSupplier.FormattingEnabled = true;
-            this.cboSupplier.Location = new System.Drawing.Point(366, 93);
-            this.cboSupplier.Name = "cboSupplier";
-            this.cboSupplier.Size = new System.Drawing.Size(121, 20);
-            this.cboSupplier.TabIndex = 11;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtstatus);
@@ -132,13 +125,12 @@ namespace ITP4915M_Project.Forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Item Info";
             // 
-            // pictureBox1
+            // txtstatus
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(144, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(240, 193);
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
+            this.txtstatus.Location = new System.Drawing.Point(89, 148);
+            this.txtstatus.Name = "txtstatus";
+            this.txtstatus.Size = new System.Drawing.Size(121, 22);
+            this.txtstatus.TabIndex = 13;
             // 
             // cmoCategory
             // 
@@ -147,6 +139,14 @@ namespace ITP4915M_Project.Forms
             this.cmoCategory.Name = "cmoCategory";
             this.cmoCategory.Size = new System.Drawing.Size(121, 20);
             this.cmoCategory.TabIndex = 12;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(144, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(240, 193);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
             // 
             // btnAdd
             // 
@@ -158,18 +158,30 @@ namespace ITP4915M_Project.Forms
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // txtstatus
+            // cboSupplier
             // 
-            this.txtstatus.Location = new System.Drawing.Point(89, 148);
-            this.txtstatus.Name = "txtstatus";
-            this.txtstatus.Size = new System.Drawing.Size(121, 22);
-            this.txtstatus.TabIndex = 13;
+            this.cboSupplier.FormattingEnabled = true;
+            this.cboSupplier.Location = new System.Drawing.Point(366, 93);
+            this.cboSupplier.Name = "cboSupplier";
+            this.cboSupplier.Size = new System.Drawing.Size(121, 20);
+            this.cboSupplier.TabIndex = 11;
+            // 
+            // btnAddSupplier
+            // 
+            this.btnAddSupplier.Location = new System.Drawing.Point(26, 415);
+            this.btnAddSupplier.Name = "btnAddSupplier";
+            this.btnAddSupplier.Size = new System.Drawing.Size(99, 23);
+            this.btnAddSupplier.TabIndex = 15;
+            this.btnAddSupplier.Text = "Add Supplier";
+            this.btnAddSupplier.UseVisualStyleBackColor = true;            
+
             // 
             // ItemAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 450);
+            this.Controls.Add(this.btnAddSupplier);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox1);
@@ -192,11 +204,12 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cboSupplier;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmoCategory;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtstatus;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ComboBox cboSupplier;
+        private System.Windows.Forms.Button btnAddSupplier;
     }
 }

@@ -43,6 +43,7 @@ namespace ITP4915M_Project.Forms
             this.cboSupplier = new System.Windows.Forms.ComboBox();
             this.cboStatus = new System.Windows.Forms.ComboBox();
             this.btnCreateBPA = new System.Windows.Forms.Button();
+            this.btnViewBPA = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -184,7 +185,7 @@ namespace ITP4915M_Project.Forms
             // 
             // btnCreateBPA
             // 
-            this.btnCreateBPA.Location = new System.Drawing.Point(404, 447);
+            this.btnCreateBPA.Location = new System.Drawing.Point(490, 447);
             this.btnCreateBPA.Name = "btnCreateBPA";
             this.btnCreateBPA.Size = new System.Drawing.Size(80, 30);
             this.btnCreateBPA.TabIndex = 55;
@@ -192,11 +193,22 @@ namespace ITP4915M_Project.Forms
             this.btnCreateBPA.UseVisualStyleBackColor = true;
             this.btnCreateBPA.Click += new System.EventHandler(this.btnCreateBPA_Click);
             // 
+            // btnViewBPA
+            // 
+            this.btnViewBPA.Location = new System.Drawing.Point(404, 447);
+            this.btnViewBPA.Name = "btnViewBPA";
+            this.btnViewBPA.Size = new System.Drawing.Size(80, 30);
+            this.btnViewBPA.TabIndex = 56;
+            this.btnViewBPA.Text = "View BPA";
+            this.btnViewBPA.UseVisualStyleBackColor = true;
+            this.btnViewBPA.Click += new System.EventHandler(this.btnViewBPA_Click);
+            // 
             // ContractManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(874, 505);
+            this.Controls.Add(this.btnViewBPA);
             this.Controls.Add(this.btnCreateBPA);
             this.Controls.Add(this.cboStatus);
             this.Controls.Add(this.cboSupplier);
@@ -236,5 +248,6 @@ namespace ITP4915M_Project.Forms
         private System.Windows.Forms.ComboBox cboSupplier;
         private System.Windows.Forms.ComboBox cboStatus;
         private System.Windows.Forms.Button btnCreateBPA;
+        private System.Windows.Forms.Button btnViewBPA;
     }
 }
