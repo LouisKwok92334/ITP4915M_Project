@@ -56,7 +56,6 @@ namespace ITP4915M_Project.Forms
             }
         }
 
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (lisItem.SelectedItem != null)
@@ -164,6 +163,108 @@ namespace ITP4915M_Project.Forms
             }
             return 0;
         }
+
+        private void butSubmit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Insert a new record into the 'request' table
+                    string insertRequestQuery = "INSERT INTO request (create_staff_id, processed_staff_id, status, created_at, updated_at) " +
+                        "VALUES (@createStaffId, @processedStaffId, @status, @createdAt, @updatedAt)";
+                    OleDbCommand insertRequestCommand = new OleDbCommand(insertRequestQuery, connection);
+                    insertRequestCommand.Parameters.AddWithValue("@createStaffId", 1);
+                    insertRequestCommand.Parameters.AddWithValue("@processedStaffId", 3);
+                    insertRequestCommand.Parameters.AddWithValue("@status", "Pending");
+                    insertRequestCommand.Parameters.AddWithValue("@createdAt", DateTime.Now.ToString("MM/dd/yyyy"));
+                    insertRequestCommand.Parameters.AddWithValue("@updatedAt", DateTime.Now.ToString("MM/dd/yyyy"));
+
+                    insertRequestCommand.ExecuteNonQuery();
+
+                    // Retrieve the newly inserted request_id
+                    string selectRequestIdQuery = "SELECT MAX(request_id) FROM request";
+                    OleDbCommand selectRequestIdCommand = new OleDbCommand(selectRequestIdQuery, connection);
+                    int requestId = (int)selectRequestIdCommand.ExecuteScalar();
+
+                    // Insert records into the 'request_item' table
+                    foreach (string addedItem in addedItems)
+                    {
+                        string[] parts = addedItem.Split('-');
+                        if (parts.Length > 1)
+                        {
+                            string itemName = parts[0].Trim();
+                            int quantity = ExtractQuantityFromSelectedItem(addedItem);
+                            decimal totalPrice = CalculateTotalPrice(itemName, quantity);
+                            int itemId = GetItemIdByName(itemName);
+
+                            string insertRequestItemQuery = "INSERT INTO request_items (request_id, item_id, quantity, total_price, created_at, updated_at) " +
+                                "VALUES (@requestId, @itemId, @quantity, @totalPrice, @createdAt, @updatedAt)";
+                            OleDbCommand insertRequestItemCommand = new OleDbCommand(insertRequestItemQuery, connection);
+                            insertRequestItemCommand.Parameters.AddWithValue("@requestId", requestId);
+                            insertRequestItemCommand.Parameters.AddWithValue("@itemId", itemId);
+                            insertRequestItemCommand.Parameters.AddWithValue("@quantity", quantity);
+                            insertRequestItemCommand.Parameters.AddWithValue("@totalPrice", totalPrice);
+                            insertRequestItemCommand.Parameters.AddWithValue("@createdAt", DateTime.Now.ToString("MM/dd/yyyy"));
+                            insertRequestItemCommand.Parameters.AddWithValue("@updatedAt", DateTime.Now.ToString("MM/dd/yyyy"));
+
+                            insertRequestItemCommand.ExecuteNonQuery();
+                        }
+                    }
+
+                    connection.Close();
+
+                    MessageBox.Show("Data uploaded successfully!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while uploading data: " + ex.Message);
+            }
+        }
+
+        private decimal CalculateTotalPrice(string itemName, int quantity)
+        {
+            // Replace this code with your actual calculation logic based on the item's price
+            decimal itemPrice = 0; // Get the item's price from the database or elsewhere
+            decimal totalPrice = itemPrice * quantity;
+            return totalPrice;
+        }
+
+        private int GetItemIdByName(string itemName)
+        {
+            int itemId = 0; // Initialize the item ID
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Query the item table to retrieve the item ID based on the item name
+                    string query = "SELECT item_id FROM item WHERE item_name = @itemName";
+                    OleDbCommand command = new OleDbCommand(query, connection);
+                    command.Parameters.AddWithValue("@itemName", itemName);
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        itemId = Convert.ToInt32(result);
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while retrieving the item's ID: " + ex.Message);
+            }
+
+            return itemId;
+        }
+
         private void txtStaffName_TextChanged(object sender, EventArgs e)
         {
             string staffName = GlobalUser.StaffName;
@@ -180,5 +281,7 @@ namespace ITP4915M_Project.Forms
         {
             textBox2.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
+
+     
     }
 }

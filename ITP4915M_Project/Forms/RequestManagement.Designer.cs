@@ -138,6 +138,7 @@ namespace ITP4915M_Project.Forms
             this.butSubmit.TabIndex = 29;
             this.butSubmit.Text = "Submit";
             this.butSubmit.UseVisualStyleBackColor = true;
+            this.butSubmit.Click += new System.EventHandler(this.butSubmit_Click);
             // 
             // lisItem
             // 
